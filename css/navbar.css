@@ -1,0 +1,93 @@
+/* ===== Base Navbar ===== */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: rgb(28, 36, 111);
+    padding: 10px 20px;
+    position: fixed;   /* Navbar fixed on top */
+    top: 0;
+    left: 0;
+    width: 100%;
+    z-index: 999;
+    box-sizing: border-box; /* include padding in width */
+}
+
+body {
+    padding-top: 60px; /* prevent content hidden behind navbar */
+}
+
+.logo {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.nav-links {
+    list-style: none;
+    display: flex;
+    gap: 15px;
+}
+
+.nav-links > li::after {
+    content: "|";
+    color: white;
+    margin-left: 10px;
+}
+
+.nav-links > li:last-child::after {
+    content: "";
+}
+
+.nav-links > li > a {
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+}
+
+/* ===== Hamburger ===== */
+.hamburger {
+    display: none;
+    font-size: 26px;
+    color: white;
+    cursor: pointer;
+}
+
+/* ===== Mobile ===== */
+@media (max-width: 430px) { /* proper mobile breakpoint */
+    .hamburger {
+        display: block;
+    }
+
+    .nav-links {
+        position: absolute;
+        top: 60px;
+        right: 0;
+        background-color: rgb(28, 36, 111);
+        width: 200px;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 10px;
+        display: none; /* hidden by default */
+    }
+
+    .nav-links.active {
+        display: flex; /* show on click */
+    }
+
+    /* remove separators on mobile */
+    .nav-links > li::after {
+        content: "";
+        margin-left: 0;
+    }
+
+    .nav-links > li {
+        width: 100%;
+    }
+
+    .nav-links > li > a {
+        display: block;
+        width: 100%;
+        padding: 8px 0;
+    }
+}

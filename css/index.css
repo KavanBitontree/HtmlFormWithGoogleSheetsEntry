@@ -1,0 +1,30 @@
+#welcome {
+    max-width: 600px;              /* Limit width */
+    margin: 50px auto;             /* Center horizontally with some top margin */
+    padding: 30px 40px;            /* Space inside the box */
+    border: 3px solid rgb(28, 36, 111); /* Border color */
+    border-radius: 15px;           /* Rounded corners */
+    background-color: #f9f9f9;     /* Light background */
+    text-align: center;            /* Center text */
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2); /* Subtle shadow */
+    font-family: 'Arial', sans-serif;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+#welcome h1 {
+    color: rgb(28, 36, 111);
+    font-size: 2.5rem;
+    margin-bottom: 15px;
+}
+
+#welcome p {
+    color: #333;
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+/* Optional hover effect */
+#welcome:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+}

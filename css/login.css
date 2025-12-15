@@ -1,0 +1,92 @@
+/* Center the login container */
+.login-container {
+    max-width: 400px;
+    margin: 60px auto;
+    padding: 30px 40px;
+    border: 3px solid rgb(28, 36, 111);
+    border-radius: 15px;
+    background-color: #f9f9f9;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+}
+
+/* Heading */
+.login-container h1 {
+    color: rgb(28, 36, 111);
+    margin-bottom: 25px;
+    font-size: 2rem;
+}
+
+/* Form styling */
+.login-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.login-container label {
+    text-align: left;
+    font-weight: bold;
+    color: rgb(28, 36, 111);
+}
+
+.login-container input {
+    padding: 10px;
+    border: 2px solid rgb(28, 36, 111);
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.login-container input:focus {
+    outline: none;
+    border-color: rgb(40, 50, 150);
+    box-shadow: 0 0 5px rgba(28, 36, 111, 0.5);
+}
+
+/* Button styling */
+.login-container button {
+    padding: 12px;
+    background-color: rgb(28, 36, 111);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-container button:hover {
+    background-color: rgb(18, 24, 90);
+}
+
+/* Signup link */
+.signup-link {
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+.signup-link a {
+    color: rgb(28, 36, 111);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.signup-link a:hover {
+    text-decoration: underline;
+}
+
+/* Responsive for mobile */
+@media (max-width: 430px) {
+    .login-container {
+        margin: 40px 20px;
+        padding: 20px;
+    }
+}
