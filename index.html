@@ -6,32 +6,47 @@
   <title>Home</title>
   <link rel="stylesheet" href="css/navbar.css">
   <link rel="stylesheet" href="css/index.css">
-  <script src="js/navbar.js"></script>
+  <link rel="stylesheet" href="css/global.css">
+  <style>
+    .user-email {
+      color: #00bcd4;
+      font-weight: bold;
+      cursor: default;
+      margin-right: 10px;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- NAVBAR (reuse this in all pages) -->
-  <nav class="navbar">
-    <div class="logo">MySite</div>
-    <!-- Hamburger -->
-    <div class="hamburger" id="hamburger">
-        &#9776;
-    </div>
+<!-- NAVBAR -->
+<nav class="navbar">
+  <div class="logo">MySite</div>
 
-    <ul class="nav-links">
-      <li><a href="login.html">Login</a></li>
-      <li><a href="register.html">Register</a></li>
-      <li><a href="feedback_form.html">Feedback</a></li>
-    </ul>
-  </nav>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
 
-  <!-- Page Content -->
-   <div id="welcome">
-    <h1>Welcome</h1>
-    <p>Website with login , signup and google sheets entry</p>
-   </div>
-  
+  <ul class="nav-links" id="navLinks">
+    <li id="loginLi"><a href="login.html">Login</a></li>
+    <li id="registerLi"><a href="register.html">Register</a></li>
+    <li id="feedbackLi"><a href="feedback_form.html">Feedback</a></li>
 
+    <li id="emailLi" class="user-email" style="display:none"></li>
+    <li id="logoutLi" style="display:none">
+      <a href="#" id="logoutBtn">Logout</a>
+    </li>
+  </ul>
+</nav>
+
+<!-- PAGE CONTENT -->
+<div id="welcome">
+  <h1>Welcome</h1>
+  <p>Website with login, signup, and google sheets entry</p>
+</div>
+
+<!-- HAMBURGER JS -->
+<script src="js/navbar.js"></script>
+<script src="js/index.js"></script>
 
 </body>
 </html>

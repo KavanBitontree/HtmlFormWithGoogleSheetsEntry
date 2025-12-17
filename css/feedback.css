@@ -1,0 +1,180 @@
+/* Feedback container */
+.feedback-container {
+    max-width: 500px;
+    margin: 60px auto;
+    padding: 30px 40px;
+    border: 3px solid rgb(28, 36, 111);
+    border-radius: 15px;
+    background-color: #f9f9f9;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+    text-align: center;
+    font-family: 'Arial', sans-serif;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feedback-container:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 12px 25px rgba(0,0,0,0.3);
+}
+
+.feedback-container h1 {
+    color: rgb(28, 36, 111);
+    margin-bottom: 25px;
+    font-size: 2rem;
+}
+
+.feedback-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.feedback-container label {
+    text-align: left;
+    font-weight: bold;
+    color: rgb(28, 36, 111);
+}
+
+.feedback-container input,
+.feedback-container select,
+.feedback-container textarea {
+    padding: 10px;
+    border: 2px solid rgb(28, 36, 111);
+    border-radius: 8px;
+    font-size: 16px;
+}
+
+.feedback-container input:focus,
+.feedback-container select:focus,
+.feedback-container textarea:focus {
+    outline: none;
+    border-color: rgb(40, 50, 150);
+    box-shadow: 0 0 5px rgba(28, 36, 111, 0.5);
+}
+
+/* Button */
+.feedback-container button {
+    padding: 12px;
+    background-color: rgb(28, 36, 111);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.feedback-container button:hover {
+    background-color: rgb(18, 24, 90);
+}
+
+/* Disabled submit button */
+.feedback-container button:disabled {
+    background-color: #9aa0c9; /* muted blue */
+    cursor: not-allowed;
+    opacity: 0.7;
+}
+
+/* Prevent hover effect when disabled */
+.feedback-container button:disabled:hover {
+    background-color: #9aa0c9;
+}
+
+
+/* Star rating */
+.star-rating {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    gap: 5px;
+}
+
+.star-rating input {
+    display: none;
+}
+
+.star-rating label {
+    font-size: 24px;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.2s;
+}
+
+.star-rating input:checked ~ label,
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: gold;
+}
+
+/* Loader overlay */
+.loader-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  display: none;              /* hidden by default */
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 9999;
+}
+
+/* Spinner */
+.spinner {
+  width: 45px;
+  height: 45px;
+  border: 5px solid #ccc;
+  border-top: 5px solid #1c246f;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.loader-overlay p {
+  margin-top: 15px;
+  font-weight: bold;
+  color: #1c246f;
+}
+
+/* =================== ERROR STYLING =================== */
+
+/* Red border for inputs, textarea, select on error */
+.feedback-container input.error-border,
+.feedback-container textarea.error-border,
+.feedback-container select.error-border {
+    border: 2px solid red;
+}
+
+/* Red border around star rating on error */
+.star-rating.error-border {
+    border: 2px solid red;
+    border-radius: 8px;
+    padding: 5px;
+    display: inline-flex; /* ensures border wraps the stars */
+}
+
+/* Error message styling */
+.error {
+    color: red;
+    font-size: 13px;
+    text-align: left;
+    display: block;
+    margin-top: 3px;
+}
+
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+
+/* Responsive */
+@media (max-width: 430px) {
+    .feedback-container {
+        margin: 40px 20px;
+        padding: 20px;
+    }
+}

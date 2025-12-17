@@ -46,48 +46,106 @@ body {
 }
 
 /* ===== Hamburger ===== */
-.hamburger {
+/* .hamburger {
     display: none;
     font-size: 26px;
     color: white;
     cursor: pointer;
+} */
+ .hamburger {
+  display: none;
+  flex-direction: column;
+  gap: 5px;
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
 }
+
+.hamburger span {
+  width: 25px;
+  height: 3px;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+/* Hamburger → Cross animation */
+.hamburger.active span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.hamburger.active span:nth-child(2) {
+  opacity: 0;
+}
+
+.hamburger.active span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+
+
+
+
 
 /* ===== Mobile ===== */
-@media (max-width: 430px) { /* proper mobile breakpoint */
-    .hamburger {
-        display: block;
-    }
+@media (max-width: 430px) {
 
-    .nav-links {
-        position: absolute;
-        top: 60px;
-        right: 0;
-        background-color: rgb(28, 36, 111);
-        width: 200px;
-        flex-direction: column;
-        align-items: flex-start;
-        padding: 10px;
-        display: none; /* hidden by default */
-    }
+  .hamburger {
+    display: flex;
+  }
 
-    .nav-links.active {
-        display: flex; /* show on click */
-    }
+  /* Mobile menu */
+  .nav-links {
+    position: absolute;
+    top: 100%;
+    right: 0;
 
-    /* remove separators on mobile */
-    .nav-links > li::after {
-        content: "";
-        margin-left: 0;
-    }
+    background-color: rgb(28, 36, 111);
 
-    .nav-links > li {
-        width: 100%;
-    }
+    flex-direction: column;
+    align-items: stretch;
 
-    .nav-links > li > a {
-        display: block;
-        width: 100%;
-        padding: 8px 0;
-    }
+    padding: 10px 15px;
+    gap: 0;
+
+    /* IMPORTANT PART */
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+  }
+
+  .nav-links.active {
+    transform: translateX(0);
+  }
+
+  /* Remove separators */
+  .nav-links > li::after {
+    content: "";
+  }
+
+  /* Items */
+  .nav-links > li {
+    width: 100%;
+  }
+
+  /* Links */
+  .nav-links > li > a {
+    display: block;
+    padding: 10px 0;
+    font-size: 18px;
+    /* border-bottom: 1px solid rgba(255,255,255,0.2); */
+  }
+
+  .nav-links > li:not(:last-child)::after {
+    content: "";
+    display: block;
+    height: 1px;
+    width: 100%;
+    background-color: rgba(255,255,255,0.25);
+    margin: 6px 0;
+  }
+
+  .nav-links > li:last-child > a {
+    border-bottom: none;
+  }
 }
+
+

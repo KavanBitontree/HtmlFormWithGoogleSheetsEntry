@@ -3,28 +3,83 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
+  <title>Feedback Form</title>
+
   <link rel="stylesheet" href="css/navbar.css">
-  <script src="js/navbar.js"></script>
+  <link rel="stylesheet" href="css/feedback.css">
+  <link rel="stylesheet" href="css/global.css">
+  <link rel="stylesheet" href="css/error.css">
+
+   <style>
+    .user-email {
+      color: #00bcd4;
+      font-weight: bold;
+      cursor: default;
+      margin-right: 10px;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- NAVBAR (reuse this in all pages) -->
-  <nav class="navbar">
-    <div class="logo">MySite</div>
+<!-- Loader -->
+<div id="loader" class="loader-overlay">
+  <div class="spinner"></div>
+  <p>Submitting feedback...</p>
+</div>
 
-    <!-- Hamburger -->
-    <div class="hamburger" id="hamburger">
-        &#9776;
-    </div>
-    <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-      <li><a href="login.html">Login</a></li>
-      <li><a href="register.html">Register</a></li>
-    </ul>
-  </nav>
 
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="logo">MySite</div>
+
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li id="emailLi" class="user-email" style="display:none"></li>
+    <li id="logoutLi"><a href="#" id="logoutBtn">Logout</a></li>
+  </ul>
+</nav>
+
+<!-- Feedback Form -->
+<div class="feedback-container">
   <h1>Feedback Form</h1>
+
+  <form id="feedbackForm" novalidate>
+
+    <label>Rating <span class="required">*</span></label>
+    <div class="star-rating">
+      <input type="radio" id="star5" name="rating" value="5"><label for="star5">&#9733;</label>
+      <input type="radio" id="star4" name="rating" value="4"><label for="star4">&#9733;</label>
+      <input type="radio" id="star3" name="rating" value="3"><label for="star3">&#9733;</label>
+      <input type="radio" id="star2" name="rating" value="2"><label for="star2">&#9733;</label>
+      <input type="radio" id="star1" name="rating" value="1"><label for="star1">&#9733;</label>
+    </div>
+    <small class="error" id="ratingError"></small>
+
+    <label>Experience <span class="required">*</span></label>
+    <select id="experience">
+      <option value="">Select</option>
+      <option value="worse">Worse</option>
+      <option value="bad">Bad</option>
+      <option value="good">Good</option>
+      <option value="best">Best</option>
+    </select>
+    <small class="error" id="experienceError"></small>
+
+    <label>Feedback <span class="required">*</span></label>
+    <textarea id="feedback" rows="5" placeholder="Write your feedback here..."></textarea>
+    <small class="error" id="feedbackError"></small>
+
+    <button id="feedbackSubmitBtn" type="submit" disabled>Submit Feedback</button>
+  </form>
+</div>
+<script src="config.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/feedback.js"></script>
+
 
 </body>
 </html>
