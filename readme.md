@@ -43,25 +43,7 @@ All pages follow a consistent structure with:
 ### Backend Integration
 The application uses Google Apps Script as a backend to store form data in Google Sheets. This provides a simple way to collect and store form submissions without requiring a traditional database server.
 
-### Async/Await Demonstration (`@async.js`)
-Contains sample code demonstrating asynchronous JavaScript programming:
-```javascript
-console.log("Start");
 
-fetch_data("/api/users")
-  .then(users => console.log(users))
-  .catch(error => console.error("Error fetching users:", error));
-
-console.log("End");
-
-function fetch_data(url){
-    return new Promise((resolve,resject)=>{
-        setTimeout(() => {
-            resolve({data: "Sample Data from " + url});
-        }, 2000);
-    })
-}
-```
 
 ### Race Condition Testing (`@test_race_condition.py`)
 A Python script that simulates concurrent user requests to test race conditions:
@@ -101,19 +83,84 @@ This script tests the backend's ability to handle simultaneous requests by:
 ## Google Apps Script Backend (`apps_script_code_placeholder`)
 
 ```
-// [PLACEHOLDER FOR GOOGLE APPS SCRIPT CODE]
-// The backend Google Apps Script code that handles:
-// 1. Form submissions (registration, login, feedback)
-// 2. Data validation and sanitization
-// 3. Storage in Google Sheets
-// 4. Race condition prevention using locks
-//
-// Key features of the Apps Script:
-// - doGet() and doPost() handlers
-// - Data processing functions for different form types
-// - LockService for preventing race conditions
-// - Proper error handling and response formatting
-// - Sheet organization for different data types
+function doPost(e) {
+  // Parse incoming JSON
+  var data = JSON.parse(e.postData.contents);
+
+  if(data.type==="register"){
+    return handleRegister(data);
+  }
+  else{
+    return handleFeedback(data)
+  }
+}
+
+/* ========== FEEDBACK FORM HANDLER ========== */
+
+
+function handleFeedback(data){
+  //Get or Create feedback sheet
+  var sheet = SpreadsheetApp.getActiveSpreadsheet().getSheetByName("Feedback");
+  if (!sheet) {
+    sheet = SpreadsheetApp.getActiveSpreadsheet().insertSheet("Feedback");
+  }
+  // Headers
+  var headers = ["Timestamp", "Email", "Rating", "Experience", "Feedback"];
+
+  if (sheet.getLastRow() === 0) {
+    sheet.appendRow(headers);
+  }
+
+  const formattedDate = Utilities.formatDate(
+    new Date(),
+    Session.getScriptTimeZone(),
+    "dd/MM/yyyy h:mm a"
+  )
+  
+  // Append data
+  sheet.appendRow([formattedDate, data.email, data.rating, data.experience, data.feedback]);
+
+  return ContentService.createTextOutput(JSON.stringify({"result":"success"}))
+    .setMimeType(ContentService.MimeType.JSON);
+}
+
+/* ========== REGISTER HANDLER ========== */
+function handleRegister(data) {
+  var ss = SpreadsheetApp.getActiveSpreadsheet();
+  var sheet = ss.getSheetByName("Register");
+
+  if (!sheet) {
+    sheet = ss.insertSheet("Register");
+    sheet.appendRow(["Timestamp", "Name", "Email"]);
+  }
+
+  // Acquire lock to prevent race conditions
+  var lock = LockService.getScriptLock();
+  lock.waitLock(5000); // wait max 5 seconds
+
+  try {
+    const formattedDate = Utilities.formatDate(
+      new Date(),
+      Session.getScriptTimeZone(),
+      "dd/MM/yyyy h:mm a"
+    );
+
+    sheet.appendRow([
+      formattedDate,
+      data.name,
+      data.email
+    ]);
+
+    return ContentService.createTextOutput(
+      JSON.stringify({ result: "register_success" })
+    ).setMimeType(ContentService.MimeType.JSON);
+
+  } finally {
+    lock.releaseLock();
+  }
+}
+
+
 ```
 
 The backend implementation uses Google Apps Script to:
