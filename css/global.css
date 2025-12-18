@@ -1,92 +1,12 @@
-/* ===============================
-   GLOBAL RESET & BASE STYLES
-================================ */
-*,
-*::before,
-*::after {
-    box-sizing: border-box;
-}
-
 html, body {
-    width: 100%;
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    overflow-x: hidden;
-    font-family: 'Poppins', 'Segoe UI', Arial, sans-serif;
+  height: 100%;
+  margin: 0;
 }
 
-/* ===============================
-   BACKGROUND IMAGE
-================================ */
 body {
-    background-image: url("../images/bg_image.jpg");
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-}
-
-/* ===============================
-   PAGE WRAPPER
-   (prevents unwanted scrolling)
-================================ */
-.page-wrapper {
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-/* ===============================
-   PAGE CONTENT
-   (centering + max width)
-================================ */
-.page-content {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 20px;
-    flex: 1;
-
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-/* ===============================
-   COMMON TEXT ELEMENTS
-================================ */
-h1, h2, h3 {
-    margin: 0;
-    font-weight: 600;
-}
-
-p {
-    margin: 0;
-    line-height: 1.6;
-}
-
-/* ===============================
-   LINKS
-================================ */
-a {
-    text-decoration: none;
-    color: inherit;
-}
-
-/* ===============================
-   REQUIRED STAR
-================================ */
-.required {
-    color: red;
-}
-
-/* ===============================
-   SMALL DEVICES FIX
-================================ */
-@media (max-height: 600px) {
-    body {
-        background-attachment: scroll;
-    }
+  background-image: url("../images/bg_image.jpg");
+  background-size: cover;        /* Fill entire screen */
+  background-position: center;   /* Center image */
+  background-repeat: no-repeat;  /* No tiling */
+  background-attachment: fixed;  /* Optional: parallax effect */
 }
