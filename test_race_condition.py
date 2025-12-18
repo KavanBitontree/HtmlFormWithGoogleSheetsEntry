@@ -1,8 +1,13 @@
 import requests
 from concurrent.futures import ThreadPoolExecutor
 from random import randint
+import os
+from dotenv import load_dotenv
+load_dotenv()
 
-WEB_APP_URL = "https://script.google.com/macros/s/AKfycbyUhh-_McPLu6q601QitIgrP22Uk0ZIne1imfHjEy5mMAFn4H5b26xKuKs7T6JMgG8/exec"
+
+
+WEB_APP_URL = os.getenv("WEB_APP_URL")
 
 
 def send_request(user_id):
