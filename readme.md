@@ -1,10 +1,5 @@
 # HTML Form with Google Sheets Entry
 
-## Ngrok link
-```
-https://c34a6a160dfc.ngrok-free.app
-```
-
 This is a comprehensive web application that demonstrates form handling, validation, and storage using Google Sheets as a backend database through Google Apps Script. The project includes user registration, login functionality, and a feedback form, with proper validation and error handling.
 
 ## Project Overview
