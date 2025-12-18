@@ -126,30 +126,6 @@ form.addEventListener("submit", async function(e) {
 });
 
 /* ================= HELPERS ================= */
-function showError(input, errorId, message) {
-    document.getElementById(errorId).textContent = message;
-
-    if (input) {
-        input.classList.add("error-border");
-    } else if (errorId === "ratingError") {
-        document.querySelector(".star-rating").classList.add("error-border");
-    }
-
-    return false;
-}
-
-function clearError(input, errorId) {
-    document.getElementById(errorId).textContent = "";
-
-    if (input) {
-        input.classList.remove("error-border");
-    } else if (errorId === "ratingError") {
-        document.querySelector(".star-rating").classList.remove("error-border");
-    }
-
-    return true;
-}
-
 function clearErrors() {
     document.querySelectorAll(".error").forEach(e => e.textContent = "");
 }

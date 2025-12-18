@@ -131,6 +131,34 @@
   color: #1c246f;
 }
 
+/* Password rules list */
+.password-rules {
+    margin: -5px 0 10px 18px;
+    padding: 0;
+    text-align: left;
+    font-size: 13px;
+}
+
+.password-rules li {
+    color: red;                 /* default invalid */
+    margin-bottom: 4px;
+    transition: color 0.2s ease;
+}
+
+/* Rule satisfied */
+.password-rules li.valid {
+    color: #2e7d32;             /* green */
+}
+
+.password-rules {
+    display: none;
+}
+
+.password-rules.show {
+    display: block;
+}
+
+
 
 
 /* Responsive for mobile */

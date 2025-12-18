@@ -1,5 +1,7 @@
 /* ================= CHECK IF LOGGED IN USER COMES IN REGISTER REDIRECT TO WELCOME ================= */
 
+import { updateRule,clearError,showError } from '../utils/utility.js';
+
 (function() {
     const isLoggedIn = localStorage.getItem("isLoggedIn");
     const user = JSON.parse(localStorage.getItem("user"));
@@ -7,6 +9,15 @@
         window.location.href = "index.html";
     }
 })();
+
+document.getElementById("showPassword").addEventListener("change", function () {
+    togglePassword("password");
+});
+
+document.getElementById("showConfirmPassword").addEventListener("change", function () {
+    togglePassword("confirm-password");
+});
+
 
 /* ================= PASSWORD TOGGLE ================= */
 function togglePassword(fieldId) {
@@ -89,18 +100,18 @@ form.addEventListener("submit", async function (e) {
 function validateName() {
     const value = nameInput.value.trim();
     if (value === "") return showError(nameInput, "nameError", "Full name is required");
-    if (!/^[A-Z]/.test(value)) return showError(nameInput, "nameError", "First letter must be capital");
+    if (!CONFIG.REGEX.NAME_STARTS_WITH_CAPITAL.test(value)) return showError(nameInput, "nameError", "First letter must be capital");
     return clearError(nameInput, "nameError");
 }
 
 function validateEmail() {
     const value = emailInput.value.trim();
-    const blocked = /(gmail|yahoo|outlook|hotmail)\.com$/i;
+    const blocked = CONFIG.REGEX.BLOCKED_EMAIL_DOMAINS;
     const storedUser = localStorage.getItem("registeredUser");
 
     if (value === "") return showError(emailInput, "emailError", "Email is required");
 
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))
+    if (!CONFIG.REGEX.EMAIL.test(value))
         return showError(emailInput, "emailError", "Invalid email format");
 
     if (blocked.test(value)) return showError(emailInput, "emailError", "Use business email only");
@@ -117,9 +128,42 @@ function validateEmail() {
 
 
 function validatePassword() {
+    
     const value = passwordInput.value;
-    if (value === "") return showError(passwordInput, "passwordError", "Password is required");
-    if (value.length < 6) return showError(passwordInput, "passwordError", "Minimum 6 characters");
+
+    const rules = {
+        length: value.length >= CONFIG.PASSWORD.MIN_LENGTH,
+        upper: CONFIG.REGEX.PASSWORD.ONE_UPPERCASE.test(value),
+        lower: CONFIG.REGEX.PASSWORD.ONE_LOWERCASE.test(value),
+        special: CONFIG.REGEX.PASSWORD.ONE_SPECIAL_CHAR.test(value)
+    };
+
+    // Show rules when user starts typing
+    document.getElementById("passwordRules").classList.add("show");
+
+    // Update UI (red → green)
+    updateRule("rule-length", rules.length);
+    updateRule("rule-upper", rules.upper);
+    updateRule("rule-lower", rules.lower);
+    updateRule("rule-special", rules.special);
+
+    // Empty password
+    if (value === "") {
+        showError(passwordInput, "passwordError", "Password is required");
+        return false;
+    }
+
+    // If any rule fails
+    if (!Object.values(rules).every(Boolean)) {
+        showError(
+            passwordInput,
+            "passwordError",
+            "Password does not meet requirements"
+        );
+        return false;
+    }
+
+    // All good
     return clearError(passwordInput, "passwordError");
 }
 
@@ -129,17 +173,4 @@ function validateConfirmPassword() {
     if (confirmPasswordInput.value !== passwordInput.value)
         return showError(confirmPasswordInput, "confirmPasswordError", "Passwords do not match");
     return clearError(confirmPasswordInput, "confirmPasswordError");
-}
-
-/* ================= HELPERS ================= */
-function showError(input, errorId, message) {
-    document.getElementById(errorId).textContent = message;
-    input.classList.add("error-border");
-    return false;
-}
-
-function clearError(input, errorId) {
-    document.getElementById(errorId).textContent = "";
-    input.classList.remove("error-border");
-    return true;
 }

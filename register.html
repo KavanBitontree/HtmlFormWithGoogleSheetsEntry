@@ -25,9 +25,9 @@
         <span></span><span></span><span></span>
     </div>
     <ul class="nav-links" id="navLinks">
-        <li><a href="index.html">Home</a></li>
+        <!-- <li><a href="index.html">Home</a></li> -->
         <li><a href="login.html">Login</a></li>
-        <li><a href="feedback_form.html">Feedback</a></li>
+        <!-- <li><a href="feedback_form.html">Feedback</a></li> -->
     </ul>
 </nav>
 
@@ -49,18 +49,26 @@
         <input type="password" id="password">
         <small class="error" id="passwordError"></small>
 
+        <ul id="passwordRules" class="password-rules">
+            <li id="rule-length">Minimum 6 characters</li>
+            <li id="rule-upper">At least one capital letter</li>
+            <li id="rule-lower">At least one small letter</li>
+            <li id="rule-special">At least one special character (# allowed)</li>
+        </ul>
+
         <div class="checkbox-wrapper">
-            <input type="checkbox" onclick="togglePassword('password')">
-            <label>Show Password</label>
+            <input type="checkbox" id="showPassword">
+            <label for="showPassword">Show Password</label>
         </div>
+
 
         <label>Confirm Password <span class="required">*</span></label>
         <input type="password" id="confirm-password">
         <small class="error" id="confirmPasswordError"></small>
 
         <div class="checkbox-wrapper">
-            <input type="checkbox" onclick="togglePassword('confirm-password')">
-            <label>Show Password</label>
+            <input type="checkbox" id="showConfirmPassword">
+            <label for="showConfirmPassword">Show Password</label>
         </div>
 
         <button type="submit">Register</button>
@@ -68,9 +76,9 @@
 
     <p class="login-link">Already have an account? <a href="login.html">Login</a></p>
 </div>
-<script src="config.js"></script>
+<script src="utils/config.js"></script>
 <script src="js/navbar.js"></script>
-<script src="js/register.js"></script>
+<script type="module" src="js/register.js"></script>
 
 
 </body>

@@ -1,5 +1,7 @@
 /* ================= CHECK IF LOGGED IN USER COMES IN LOGIN REDIRECT TO WELCOME ================= */
 
+import { clearError, showError } from '../utils/utility.js';
+
 (function() {
     const isLoggedIn = localStorage.getItem("isLoggedIn");
     const user = JSON.parse(localStorage.getItem("user"));
@@ -62,10 +64,10 @@ function validateEmail() {
     if (value === "")
         return showError(emailInput, "emailError", "Email is required");
 
-    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value))
+    if (!CONFIG.REGEX.EMAIL.test(value))
         return showError(emailInput, "emailError", "Invalid email format");
 
-    const blocked = /(gmail|yahoo|outlook|hotmail)\.com$/i;
+    const blocked = CONFIG.REGEX.BLOCKED_EMAIL_DOMAINS;
     if (blocked.test(value)){
         return showError(emailInput, "emailError", "Use business email only");
     }
@@ -79,21 +81,8 @@ function validatePassword() {
     if (value === "")
         return showError(passwordInput, "passwordError", "Password is required");
 
-    if (value.length < 6)
+    if (value.length < CONFIG.PASSWORD.MIN_LENGTH)
         return showError(passwordInput, "passwordError", "Minimum 6 characters");
 
     return clearError(passwordInput, "passwordError");
-}
-
-/* ================= HELPERS ================= */
-function showError(input, errorId, message) {
-    document.getElementById(errorId).textContent = message;
-    input.classList.add("error-border");
-    return false;
-}
-
-function clearError(input, errorId) {
-    document.getElementById(errorId).textContent = "";
-    input.classList.remove("error-border");
-    return true;
 }
