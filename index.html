@@ -3,50 +3,203 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Home</title>
+  <title>Kavan Gajera - Portfolio</title>
+
   <link rel="stylesheet" href="css/navbar.css">
-  <link rel="stylesheet" href="css/index.css">
   <link rel="stylesheet" href="css/global.css">
-  <style>
-    .user-email {
-      color: #00bcd4;
-      font-weight: bold;
-      cursor: default;
-      margin-right: 10px;
-    }
-  </style>
+  <link rel="stylesheet" href="css/index.css">
 </head>
-<body>
+
+<body class="home-body">
 
 <!-- NAVBAR -->
 <nav class="navbar">
-  <div class="logo">MySite</div>
+  <div class="logo">
+    <span class="logo-text">AI</span>
+    <span class="logo-separator">|</span>
+    <span class="logo-text">Portfolio</span>
+  </div>
 
   <div class="hamburger" id="hamburger">
     <span></span><span></span><span></span>
   </div>
 
   <ul class="nav-links" id="navLinks">
-    <li id="loginLi"><a href="login.html">Login</a></li>
-    <li id="registerLi"><a href="register.html">Register</a></li>
-    <li id="feedbackLi"><a href="feedback_form.html">Feedback</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="experience.html">Experience</a></li>
+    <li><a href="contact.html">Contact</a></li>
 
-    <li id="emailLi" class="user-email" style="display:none"></li>
-    <li id="logoutLi" style="display:none">
+    <li id="emailLi" class="user-email" style="display: none;"></li>
+    <li id="logoutLi" style="display: none;">
       <a href="#" id="logoutBtn">Logout</a>
     </li>
   </ul>
 </nav>
 
-<!-- PAGE CONTENT -->
-<div id="welcome">
-  <h1>Welcome</h1>
-  <p>Website with login, signup, and google sheets entry</p>
+<!-- PAGE WRAPPER -->
+<div class="page-wrapper">
+
+  <!-- PORTFOLIO SECTION -->
+  <div id="portfolio">
+    <div class="portfolio-left">
+      <div class="ai-badge">AI/ML Engineer</div>
+      <h1>KAVAN S GAJERA</h1>
+      <h3>B.Tech - Computer Engineering, DDU Nadiad, Gujarat</h3>
+      <p>
+        I am a passionate Computer Engineering student with a strong foundation in full-stack development and machine learning.
+        Currently pursuing B.Tech from DDU Nadiad with a CPI of 8.56. My expertise spans across C++, Python, Java, and JavaScript,
+        with hands-on experience in React, Spring Boot, Flask, and Django.
+      </p>
+      <div class="tech-skills">
+        <span class="skill-tag" data-skill="92">
+          Python
+          <div class="skill-progress">
+            <div class="skill-progress-bar-container">
+              <div class="skill-progress-bar"></div>
+            </div>
+            <span class="skill-percentage">0%</span>
+          </div>
+        </span>
+        <span class="skill-tag" data-skill="88">
+          React
+          <div class="skill-progress">
+            <div class="skill-progress-bar-container">
+              <div class="skill-progress-bar"></div>
+            </div>
+            <span class="skill-percentage">0%</span>
+          </div>
+        </span>
+        <span class="skill-tag" data-skill="85">
+          ML/AI
+          <div class="skill-progress">
+            <div class="skill-progress-bar-container">
+              <div class="skill-progress-bar"></div>
+            </div>
+            <span class="skill-percentage">0%</span>
+          </div>
+        </span>
+        <span class="skill-tag" data-skill="90">
+          Java
+          <div class="skill-progress">
+            <div class="skill-progress-bar-container">
+              <div class="skill-progress-bar"></div>
+            </div>
+            <span class="skill-percentage">0%</span>
+          </div>
+        </span>
+      </div>
+    </div>
+
+    <div class="portfolio-right" id="particles">
+      <!-- AI/ML Logo Containers with Progress Bars -->
+      <div class="logo-container" data-skill="82">
+        <img src="images/apple.svg" alt="Apple" class="ml-logo apple-logo" />
+        <div class="logo-progress">
+          <div class="logo-progress-bar-container">
+            <div class="logo-progress-bar"></div>
+          </div>
+          <span class="logo-percentage">Apple - 0%</span>
+        </div>
+      </div>
+
+      <div class="logo-container" data-skill="88">
+        <img src="images/huggingface.svg" alt="HuggingFace" class="ml-logo hf-logo" />
+        <div class="logo-progress">
+          <div class="logo-progress-bar-container">
+            <div class="logo-progress-bar"></div>
+          </div>
+          <span class="logo-percentage">HuggingFace - 0%</span>
+        </div>
+      </div>
+
+      <div class="logo-container" data-skill="82">
+        <img src="images/langchain.svg" alt="LangChain" class="ml-logo langchain-logo" />
+        <div class="logo-progress">
+          <div class="logo-progress-bar-container">
+            <div class="logo-progress-bar"></div>
+          </div>
+          <span class="logo-percentage">LangChain - 0%</span>
+        </div>
+      </div>
+
+      <div class="logo-container" data-skill="78">
+        <img src="images/ollama.svg" alt="Ollama" class="ml-logo ollama-logo" />
+        <div class="logo-progress">
+          <div class="logo-progress-bar-container">
+            <div class="logo-progress-bar"></div>
+          </div>
+          <span class="logo-percentage">Ollama - 0%</span>
+        </div>
+      </div>
+
+      <div class="logo-container" data-skill="86">
+        <img src="images/claude.svg" alt="Claude" class="ml-logo claude-logo" />
+        <div class="logo-progress">
+          <div class="logo-progress-bar-container">
+            <div class="logo-progress-bar"></div>
+          </div>
+          <span class="logo-percentage">Claude - 0%</span>
+        </div>
+      </div>
+
+      <div class="logo-container" data-skill="93">
+        <img src="images/openai.svg" alt="OpenAI" class="ml-logo openai-logo" />
+        <div class="logo-progress">
+          <div class="logo-progress-bar-container">
+            <div class="logo-progress-bar"></div>
+          </div>
+          <span class="logo-percentage">OpenAI - 0%</span>
+        </div>
+      </div>
+
+      <!-- Neural Network Background -->
+      <div class="neural-network"></div>
+
+      <!-- Animated circuit lines -->
+      <svg class="circuit-lines" viewBox="0 0 400 600" xmlns="http://www.w3.org/2000/svg">
+        <path d="M50,50 L150,100 L250,80 L350,150" class="circuit-path" stroke="rgba(255,255,255,0.3)" stroke-width="2" fill="none"/>
+        <path d="M100,200 L200,250 L300,220 L350,300" class="circuit-path" stroke="rgba(0,188,212,0.4)" stroke-width="2" fill="none"/>
+        <path d="M50,400 L150,350 L250,400 L350,450" class="circuit-path" stroke="rgba(255,255,255,0.2)" stroke-width="2" fill="none"/>
+        <circle cx="150" cy="100" r="4" fill="rgba(0,188,212,0.8)" class="circuit-node"/>
+        <circle cx="250" cy="80" r="4" fill="rgba(0,188,212,0.8)" class="circuit-node"/>
+        <circle cx="200" cy="250" r="4" fill="rgba(255,255,255,0.8)" class="circuit-node"/>
+        <circle cx="150" cy="350" r="4" fill="rgba(0,188,212,0.8)" class="circuit-node"/>
+      </svg>
+    </div>
+  </div>
+
 </div>
 
-<!-- HAMBURGER JS -->
-<script src="js/navbar.js"></script>
-<script src="js/index.js"></script>
+<script>
+  /* ================= AUTH GUARD ================= */
+  if (localStorage.getItem("isLoggedIn") !== "true") {
+    window.location.href = "login.html";
+  }
 
+  /* ================= LOGOUT ================= */
+  document.getElementById("logoutBtn").addEventListener("click", () => {
+    localStorage.removeItem("isLoggedIn");
+    localStorage.removeItem("user");
+    window.location.href = "login.html";
+  });
+
+  /* ================= SHOW USER EMAIL ================= */
+  const currentUser = JSON.parse(localStorage.getItem("user"));
+  const emailLi = document.getElementById("emailLi");
+  const logoutLi = document.getElementById("logoutLi");
+
+  if (currentUser && currentUser.email) {
+    if (emailLi) {
+      emailLi.style.display = "block";
+      emailLi.textContent = currentUser.email;
+    }
+    if (logoutLi) {
+      logoutLi.style.display = "block";
+    }
+  } else {
+    window.location.href = "login.html";
+  }
+</script>
+<script src="js/index.js"></script>
 </body>
 </html>

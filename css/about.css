@@ -1,0 +1,835 @@
+/* ================= BODY ================= */
+.about-body {
+  overflow-y: auto;
+  background: #f5f5f5;
+  position: relative;
+  min-height: 100vh;
+}
+
+/* Background image with overlay */
+.about-body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: url("../images/bg_image.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+/* ================= PAGE WRAPPER ================= */
+.page-wrapper {
+  min-height: 100vh;
+  padding: 90px 20px 80px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+}
+
+/* Canvas now positioned absolutely within about-container */
+#neuralCanvas {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 1;
+}
+
+/* ================= ABOUT CONTAINER ================= */
+/* Further reduced background opacity to make neural animation more visible */
+.about-container {
+  max-width: 1200px;
+  width: 100%;
+  padding: 40px 50px;
+  background: rgba(249, 249, 249, 0.35);
+  border: 3px solid rgb(28, 36, 111);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 40px rgba(0, 188, 212, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.1);
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  z-index: 3;
+}
+
+/* Shattered blue pattern */
+.about-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(28, 36, 111, 0.03) 0%,
+    rgba(0, 188, 212, 0.05) 25%,
+    rgba(28, 36, 111, 0.04) 50%,
+    rgba(0, 188, 212, 0.03) 75%,
+    rgba(28, 36, 111, 0.05) 100%
+  );
+  background-size: 400% 400%;
+  animation: shatteredShift 15s ease infinite;
+  clip-path: polygon(
+    0% 0%,
+    20% 0%,
+    15% 8%,
+    25% 12%,
+    30% 5%,
+    40% 10%,
+    45% 3%,
+    55% 7%,
+    60% 0%,
+    80% 0%,
+    75% 15%,
+    85% 20%,
+    90% 12%,
+    100% 18%,
+    100% 30%,
+    95% 35%,
+    88% 28%,
+    92% 40%,
+    100% 45%,
+    100% 65%,
+    93% 70%,
+    97% 78%,
+    100% 82%,
+    100% 100%,
+    78% 100%,
+    82% 92%,
+    70% 95%,
+    65% 88%,
+    58% 100%,
+    42% 100%,
+    38% 93%,
+    30% 97%,
+    22% 90%,
+    18% 100%,
+    0% 100%,
+    5% 85%,
+    0% 75%,
+    8% 68%,
+    3% 55%,
+    0% 50%,
+    7% 42%,
+    0% 35%,
+    10% 28%,
+    5% 18%,
+    0% 12%
+  );
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes shatteredShift {
+  0%,
+  100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+/* ================= SECTIONS ================= */
+.about-section {
+  margin-bottom: 60px;
+  position: relative;
+  z-index: 1;
+}
+
+.about-section:last-child {
+  margin-bottom: 0;
+}
+
+.section-title {
+  background: linear-gradient(135deg, rgb(28, 36, 111) 0%, #00bcd4 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-size: 2.5rem;
+  font-weight: 800;
+  margin-bottom: 40px;
+  text-align: center;
+  letter-spacing: -1px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.title-icon {
+  font-size: 2.5rem;
+  filter: drop-shadow(0 0 10px rgba(0, 188, 212, 0.5));
+}
+
+/* ================= SECTION ITEMS ================= */
+/* Further reduced background opacity to show lighter neural animation throughout */
+.section-item {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: center;
+  margin-bottom: 50px;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.25);
+  border: 2px solid rgba(0, 188, 212, 0.3);
+  border-radius: 15px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.section-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(0, 188, 212, 0.1), transparent);
+  transition: left 0.5s ease;
+}
+
+.section-item:hover::before {
+  left: 100%;
+}
+
+.section-item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15), 0 0 30px rgba(28, 36, 111, 0.3);
+  border-color: rgb(28, 36, 111);
+}
+
+.section-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Left layout: text left, preview right */
+.section-item.item-left .item-content {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.section-item.item-left .item-preview {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+/* Right layout: preview left, text right */
+.section-item.item-right .item-preview {
+  grid-column: 1;
+  grid-row: 1;
+}
+
+.section-item.item-right .item-content {
+  grid-column: 2;
+  grid-row: 1;
+}
+
+/* ================= ITEM CONTENT ================= */
+.item-content {
+  padding: 10px;
+}
+
+.item-title {
+  color: rgb(28, 36, 111);
+  font-size: 1.8rem;
+  font-weight: 700;
+  margin-bottom: 15px;
+}
+
+.item-institution {
+  color: #333;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+.item-location,
+.item-duration {
+  color: #555;
+  font-size: 1rem;
+  margin-bottom: 5px;
+}
+
+.item-stream {
+  color: #555;
+  font-size: 1rem;
+  margin-top: 10px;
+}
+
+.item-description {
+  color: #444;
+  font-size: 1rem;
+  line-height: 1.6;
+  margin-bottom: 15px;
+}
+
+.item-subjects {
+  margin-top: 15px;
+  color: #444;
+  font-size: 0.95rem;
+}
+
+.item-subjects strong {
+  color: rgb(28, 36, 111);
+  display: block;
+  margin-bottom: 8px;
+}
+
+.item-subjects ul {
+  margin: 0;
+  padding-left: 20px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5px;
+}
+
+.item-subjects li {
+  color: #555;
+  line-height: 1.5;
+}
+
+/* ================= BADGES ================= */
+.item-badge {
+  display: inline-block;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin-top: 15px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.item-badge.pursuing {
+  background: linear-gradient(135deg, #00bcd4, rgb(28, 36, 111));
+  color: white;
+  box-shadow: 0 0 15px rgba(0, 188, 212, 0.4);
+}
+
+.item-badge.completed {
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
+  color: white;
+  box-shadow: 0 0 15px rgba(76, 175, 80, 0.4);
+}
+
+.item-badge.research {
+  background: linear-gradient(135deg, #ff9800, #f57c00);
+  color: white;
+  box-shadow: 0 0 15px rgba(255, 152, 0, 0.4);
+}
+
+.item-badge.hackathon {
+  background: linear-gradient(135deg, #9c27b0, #7b1fa2);
+  color: white;
+  box-shadow: 0 0 15px rgba(156, 39, 176, 0.4);
+}
+
+/* ================= TECH STACK ================= */
+.tech-stack {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin: 15px 0;
+}
+
+.tech-tag {
+  background: linear-gradient(135deg, rgb(28, 36, 111), #00bcd4);
+  color: white;
+  padding: 6px 14px;
+  border-radius: 12px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0, 188, 212, 0.3);
+  transition: all 0.2s ease;
+}
+
+.tech-tag:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 188, 212, 0.5);
+}
+
+/* ================= FEATURE LIST ================= */
+.feature-list {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0;
+}
+
+.feature-list li {
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.6;
+  padding-left: 25px;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.feature-list li::before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #00bcd4;
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+/* ================= PROJECT LINKS ================= */
+.project-links {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.project-btn {
+  padding: 10px 20px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.project-btn.live {
+  background: linear-gradient(135deg, #4caf50, #2e7d32);
+  color: white;
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+.project-btn.live:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(76, 175, 80, 0.5);
+}
+
+.project-btn.github {
+  background: linear-gradient(135deg, rgb(28, 36, 111), #00bcd4);
+  color: white;
+  box-shadow: 0 4px 15px rgba(0, 188, 212, 0.3);
+}
+
+.project-btn.github:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 6px 20px rgba(0, 188, 212, 0.5);
+}
+
+/* ================= ITEM PREVIEW ================= */
+.item-preview {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.project-image {
+  width: 100%;
+  height: auto;
+  max-height: 500px; /* increased from 350px to 500px for research image */
+  object-fit: cover;
+  border-radius: 12px;
+  border: 3px solid rgba(0, 188, 212, 0.5);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.project-image.research-image {
+  max-height: 350px;
+  object-fit: contain; /* Changed to contain to show full panoramic image */
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.project-image:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 35px rgba(0, 188, 212, 0.4);
+  border-color: rgb(28, 36, 111);
+}
+
+/* ================= PDF PREVIEW ================= */
+/* Removed blur and reduced opacity for neural animation visibility */
+.pdf-preview {
+  background: linear-gradient(135deg, rgba(28, 36, 111, 0.05), rgba(0, 188, 212, 0.05));
+  border: 3px solid rgba(0, 188, 212, 0.5);
+  border-radius: 15px;
+  padding: 40px 30px;
+  text-align: center;
+  min-width: 280px;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.pdf-preview::before {
+  content: "";
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: linear-gradient(45deg, transparent, rgba(0, 188, 212, 0.1), transparent);
+  animation: pdfShimmer 3s infinite;
+}
+
+@keyframes pdfShimmer {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.pdf-preview:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 188, 212, 0.4);
+  border-color: rgb(28, 36, 111);
+}
+
+.pdf-preview.certificate {
+  background: linear-gradient(135deg, rgba(156, 39, 176, 0.02), rgba(123, 31, 162, 0.02));
+  border-color: rgba(156, 39, 176, 0.5);
+}
+
+.pdf-preview.certificate:hover {
+  box-shadow: 0 12px 30px rgba(156, 39, 176, 0.4);
+  border-color: #9c27b0;
+}
+
+.pdf-icon {
+  font-size: 5rem;
+  margin-bottom: 15px;
+  filter: drop-shadow(0 0 15px rgba(0, 188, 212, 0.5));
+  position: relative;
+  z-index: 1;
+}
+
+.pdf-label {
+  color: rgb(28, 36, 111);
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 20px;
+  position: relative;
+  z-index: 1;
+}
+
+.view-pdf-btn {
+  background: linear-gradient(135deg, rgb(28, 36, 111), #00bcd4);
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(0, 188, 212, 0.3);
+  position: relative;
+  z-index: 1;
+}
+
+.view-pdf-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 188, 212, 0.5);
+}
+
+/* Added LinkedIn-style PDF thumbnail preview styles */
+.pdf-preview-container {
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.pdf-thumbnail {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+  height: 280px;
+  border-radius: 12px;
+  overflow: hidden;
+  border: 3px solid rgba(0, 188, 212, 0.5);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.pdf-thumb-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+/* Added canvas-specific styling for PDF thumbnails */
+.pdf-thumb-canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.3s ease;
+}
+
+.pdf-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(28, 36, 111, 0.85);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.pdf-preview-container:hover .pdf-overlay {
+  opacity: 1;
+}
+
+.pdf-preview-container:hover .pdf-thumb-image {
+  transform: scale(1.1);
+}
+
+.pdf-preview-container:hover .pdf-thumb-canvas {
+  transform: scale(1.1);
+}
+
+.pdf-preview-container:hover .pdf-thumbnail {
+  border-color: rgb(28, 36, 111);
+  box-shadow: 0 12px 35px rgba(0, 188, 212, 0.4);
+}
+
+.view-icon {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+}
+
+.pdf-overlay p {
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.pdf-caption {
+  text-align: center;
+  color: rgb(28, 36, 111);
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 12px;
+}
+
+/* Added PDF modal styles for full-screen viewing */
+.pdf-modal {
+  display: none;
+  position: fixed;
+  z-index: 9999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  background-color: rgba(0, 0, 0, 0.95);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.pdf-modal-content {
+  position: relative;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 1200px;
+  height: calc(100vh - 40px);
+}
+
+.pdf-modal-close {
+  position: absolute;
+  top: -40px;
+  right: 0;
+  color: white;
+  font-size: 40px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10000;
+  background: rgba(0, 188, 212, 0.8);
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.pdf-modal-close:hover,
+.pdf-modal-close:focus {
+  background: rgb(28, 36, 111);
+  transform: rotate(90deg);
+}
+
+.pdf-frame {
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 0 40px rgba(0, 188, 212, 0.5);
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .about-container {
+    padding: 30px 25px;
+  }
+
+  .section-title {
+    font-size: 2rem;
+  }
+
+  .section-item {
+    grid-template-columns: 1fr;
+    gap: 25px;
+    padding: 20px;
+  }
+
+  /* Mobile: Preview always on top */
+  .section-item.item-left .item-preview,
+  .section-item.item-right .item-preview {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .section-item.item-left .item-content,
+  .section-item.item-right .item-content {
+    grid-column: 1;
+    grid-row: 2;
+  }
+
+  .item-title {
+    font-size: 1.5rem;
+  }
+
+  .item-subjects ul {
+    grid-template-columns: 1fr;
+  }
+
+  .project-links {
+    flex-direction: column;
+  }
+
+  .project-btn {
+    text-align: center;
+    justify-content: center;
+  }
+
+  .project-image {
+    max-height: 350px; /* increased from 250px to 350px for mobile */
+  }
+
+  .project-image.research-image {
+    max-height: 250px;
+  }
+
+  .pdf-preview {
+    min-width: 100%;
+  }
+
+  /* Added mobile responsive styles for PDF thumbnails */
+  .pdf-thumbnail {
+    max-width: 100%;
+    height: 220px;
+  }
+
+  .pdf-modal-content {
+    width: 95%;
+    height: calc(100vh - 20px);
+    margin: 10px auto;
+  }
+
+  .pdf-modal-close {
+    top: -35px;
+    width: 40px;
+    height: 40px;
+    font-size: 32px;
+  }
+}
+
+@media (max-width: 430px) {
+  .page-wrapper {
+    min-height: 100svh;
+    padding: 80px 15px 20px;
+  }
+
+  .about-container {
+    padding: 25px 20px;
+  }
+
+  .section-title {
+    font-size: 1.75rem;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .title-icon {
+    font-size: 2rem;
+  }
+
+  .item-title {
+    font-size: 1.3rem;
+  }
+
+  .tech-stack {
+    gap: 6px;
+  }
+
+  .tech-tag {
+    font-size: 0.75rem;
+    padding: 5px 10px;
+  }
+
+  /* Mobile adjustments for PDF thumbnails */
+  .pdf-thumbnail {
+    height: 180px;
+  }
+
+  .view-icon {
+    font-size: 2.5rem;
+  }
+
+  .pdf-overlay p {
+    font-size: 1rem;
+  }
+}

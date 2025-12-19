@@ -1,14 +1,12 @@
 /* ================= BODY ================= */
-.feedback-body {
+.contact-body {
   overflow-y: auto;
-  /* Using light theme like index page */
   background: #f5f5f5;
   position: relative;
   min-height: 100vh;
 }
 
-/* Add background image like index page */
-.feedback-body::before {
+.contact-body::before {
   content: "";
   position: fixed;
   top: 0;
@@ -24,8 +22,8 @@
   z-index: -1;
 }
 
-/* Neural network canvas inside form container */
-.neural-inside-form {
+/* Neural network canvas */
+.neural-inside-contact {
   position: absolute;
   top: 0;
   left: 0;
@@ -33,7 +31,7 @@
   height: 100%;
   z-index: 0;
   pointer-events: none;
-  opacity: 0.2;
+  opacity: 0.15;
 }
 
 /* ================= PAGE WRAPPER ================= */
@@ -48,122 +46,36 @@
   z-index: 1;
 }
 
-/* ================= FEEDBACK CONTAINER ================= */
-.feedback-container {
-  max-width: 1200px;
+/* ================= CONTACT CONTAINER ================= */
+.contact-container {
+  max-width: 1400px;
   width: 100%;
-  padding: 40px 50px;
-
-  /* AI/ML glassmorphism effect with light theme like index page */
+  padding: 50px 60px;
   background: rgba(249, 249, 249, 0.95);
   backdrop-filter: blur(10px);
   border: 3px solid rgb(28, 36, 111);
   border-radius: 20px;
-
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 40px rgba(0, 188, 212, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.1);
-
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 40px rgba(0, 188, 212, 0.3);
   text-align: center;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-
   transition: transform 0.3s ease, box-shadow 0.3s ease;
   position: relative;
   overflow: hidden;
 }
 
-.feedback-container.dimmed {
+.contact-container.dimmed {
   opacity: 0.3;
   pointer-events: none;
   transition: opacity 0.3s ease;
 }
 
-/* Added shattered blue pattern inside form container */
-.feedback-container::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    135deg,
-    rgba(28, 36, 111, 0.03) 0%,
-    rgba(0, 188, 212, 0.05) 25%,
-    rgba(28, 36, 111, 0.04) 50%,
-    rgba(0, 188, 212, 0.03) 75%,
-    rgba(28, 36, 111, 0.05) 100%
-  );
-  background-size: 400% 400%;
-  animation: shatteredShift 15s ease infinite;
-  clip-path: polygon(
-    0% 0%,
-    20% 0%,
-    15% 8%,
-    25% 12%,
-    30% 5%,
-    40% 10%,
-    45% 3%,
-    55% 7%,
-    60% 0%,
-    80% 0%,
-    75% 15%,
-    85% 20%,
-    90% 12%,
-    100% 18%,
-    100% 30%,
-    95% 35%,
-    88% 28%,
-    92% 40%,
-    100% 45%,
-    100% 65%,
-    93% 70%,
-    97% 78%,
-    100% 82%,
-    100% 100%,
-    78% 100%,
-    82% 92%,
-    70% 95%,
-    65% 88%,
-    58% 100%,
-    42% 100%,
-    38% 93%,
-    30% 97%,
-    22% 90%,
-    18% 100%,
-    0% 100%,
-    5% 85%,
-    0% 75%,
-    8% 68%,
-    3% 55%,
-    0% 50%,
-    7% 42%,
-    0% 35%,
-    10% 28%,
-    5% 18%,
-    0% 12%
-  );
-  z-index: 0;
-  pointer-events: none;
-}
-
-@keyframes shatteredShift {
-  0%,
-  100% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-}
-
-/* Removed pink gradient hover effect, using only dark blue */
-.feedback-container:hover {
+.contact-container:hover {
   transform: translateY(-5px);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3), 0 0 60px rgba(28, 36, 111, 0.5), inset 0 0 30px rgba(255, 255, 255, 0.1);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3), 0 0 60px rgba(28, 36, 111, 0.5);
 }
 
 /* ================= HEADINGS ================= */
 .ai-title {
-  /* Using gradient text like index page */
   background: linear-gradient(135deg, rgb(28, 36, 111) 0%, #00bcd4 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -171,7 +83,6 @@
   margin-bottom: 10px;
   font-size: 2.5rem;
   font-weight: 800;
-  text-shadow: none;
   letter-spacing: -1px;
   position: relative;
   z-index: 1;
@@ -179,90 +90,166 @@
 
 .subtitle {
   color: #555;
-  margin-bottom: 35px;
+  margin-bottom: 40px;
   font-size: 1rem;
   font-weight: 500;
   position: relative;
   z-index: 1;
 }
 
-/* ================= FORM ================= */
-.feedback-container form {
-  display: flex;
-  flex-direction: column;
+/* ================= GRID LAYOUT ================= */
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 40px;
+  text-align: left;
   position: relative;
   z-index: 1;
 }
 
-/* ================= GRID ================= */
-.feedback-grid {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 30px;
-  margin-bottom: 35px;
-}
-
-/* Desktop: two columns */
-@media (min-width: 768px) {
-  .feedback-grid {
-    grid-template-columns: 1fr 1.5fr;
+@media (min-width: 968px) {
+  .contact-grid {
+    grid-template-columns: 1fr 1.3fr;
     align-items: start;
   }
 }
 
-/* ================= LEFT & RIGHT ================= */
-.feedback-left,
-.feedback-right {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
+/* ================= SECTION TITLES ================= */
+.section-title {
+  color: rgb(28, 36, 111);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 25px;
+  letter-spacing: -0.5px;
 }
 
-/* ================= INPUTS ================= */
-.feedback-container label {
-  text-align: left;
+/* ================= CONTACT INFO SECTION ================= */
+.contact-info-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.contact-items {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 18px 20px;
+  background: rgba(255, 255, 255, 0.8);
+  border: 2px solid rgba(28, 36, 111, 0.2);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+}
+
+.contact-item:hover {
+  background: rgba(255, 255, 255, 1);
+  border-color: rgb(28, 36, 111);
+  transform: translateX(5px);
+  box-shadow: 0 4px 15px rgba(28, 36, 111, 0.2);
+}
+
+.contact-icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(28, 36, 111, 0.1);
+  border-radius: 10px;
+  flex-shrink: 0;
+  transition: all 0.3s ease;
+}
+
+.contact-item:hover .contact-icon {
+  background: rgba(28, 36, 111, 0.15);
+  transform: scale(1.1);
+}
+
+.contact-details {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contact-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  color: rgb(28, 36, 111);
+  letter-spacing: 1px;
+  opacity: 0.7;
+}
+
+.contact-value {
+  font-size: 0.95rem;
   font-weight: 600;
-  /* Using dark color for light theme */
+  color: #333;
+}
+
+/* ================= FEEDBACK SECTION ================= */
+.feedback-section {
+  display: flex;
+  flex-direction: column;
+}
+
+.feedback-section form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.feedback-section label {
+  font-weight: 600;
   color: rgb(28, 36, 111);
   font-size: 0.95rem;
   letter-spacing: 0.5px;
 }
 
-.feedback-container input,
-.feedback-container select,
-.feedback-container textarea {
+.feedback-section input,
+.feedback-section select,
+.feedback-section textarea {
   padding: 14px 16px;
-  /* Light theme input styling */
   background: rgba(255, 255, 255, 0.9);
   border: 2px solid rgba(0, 188, 212, 0.3);
   border-radius: 12px;
   font-size: 16px;
   color: #333;
   transition: all 0.3s ease;
-}
-
-.feedback-container select {
-  cursor: pointer;
-}
-
-.feedback-container textarea {
-  resize: vertical;
-  min-height: 200px;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-/* Changed hover effect to use only dark blue */
-.feedback-container input:focus,
-.feedback-container select:focus,
-.feedback-container textarea:focus {
+.feedback-section select {
+  cursor: pointer;
+}
+
+.feedback-section textarea {
+  resize: vertical;
+  min-height: 150px;
+}
+
+.feedback-section input:focus,
+.feedback-section select:focus,
+.feedback-section textarea:focus {
   outline: none;
   border-color: rgb(28, 36, 111);
   background: rgba(255, 255, 255, 1);
   box-shadow: 0 0 20px rgba(28, 36, 111, 0.3);
 }
 
-.feedback-container input::placeholder,
-.feedback-container textarea::placeholder {
+.feedback-section input::placeholder,
+.feedback-section textarea::placeholder {
   color: #999;
 }
 
@@ -278,7 +265,6 @@
   display: none;
 }
 
-/* Made unselected stars more visible with darker color and border */
 .star-rating label {
   font-size: 32px;
   color: #ddd;
@@ -288,7 +274,6 @@
   text-shadow: -1px -1px 0 #999, 1px -1px 0 #999, -1px 1px 0 #999, 1px 1px 0 #999;
 }
 
-/* Changed hover and selected color to dark blue */
 .star-rating input:checked ~ label,
 .star-rating label:hover,
 .star-rating label:hover ~ label {
@@ -300,25 +285,20 @@
 
 /* ================= BUTTON ================= */
 .ai-button {
-  align-self: center;
+  align-self: flex-start;
   min-width: 240px;
   padding: 16px 32px;
-
-  /* Button gradient matching index page theme */
   background: linear-gradient(135deg, #00bcd4 0%, rgb(28, 36, 111) 100%);
   color: white;
-
   font-size: 17px;
   font-weight: bold;
   border: 2px solid rgba(0, 188, 212, 0.5);
   border-radius: 12px;
   cursor: pointer;
-
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 12px;
-
   transition: all 0.3s ease;
   position: relative;
   overflow: hidden;
@@ -351,7 +331,6 @@
 }
 
 .ai-button:disabled {
-  /* Disabled state for light theme */
   background: rgba(150, 150, 150, 0.5);
   border-color: rgba(120, 120, 120, 0.3);
   cursor: not-allowed;
@@ -376,15 +355,12 @@
 .loader-overlay {
   position: fixed;
   inset: 0;
-  /* Light theme loader overlay */
   background: rgba(249, 249, 249, 0.6);
   backdrop-filter: blur(5px);
-
   display: none;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-
   z-index: 9999;
 }
 
@@ -395,7 +371,6 @@
   gap: 25px;
 }
 
-/* ML-themed neural network loader */
 .ml-loader {
   filter: drop-shadow(0 0 20px rgba(0, 188, 212, 0.5));
 }
@@ -466,7 +441,6 @@
   margin-top: 5px;
   font-weight: 600;
   font-size: 1.1rem;
-  /* Darker text for light theme */
   color: rgb(28, 36, 111);
   text-shadow: 0 0 10px rgba(0, 188, 212, 0.3);
   animation: textPulse 1.5s ease-in-out infinite;
@@ -482,10 +456,15 @@
   }
 }
 
+/* ================= REQUIRED ASTERISK ================= */
+.required {
+  color: #e74c3c;
+}
+
 /* ================= MOBILE ================= */
-@media (max-width: 768px) {
-  .feedback-container {
-    padding: 30px 25px;
+@media (max-width: 968px) {
+  .contact-container {
+    padding: 40px 30px;
   }
 
   .ai-title {
@@ -495,6 +474,10 @@
   .subtitle {
     font-size: 0.9rem;
   }
+
+  .section-title {
+    font-size: 1.3rem;
+  }
 }
 
 @media (max-width: 430px) {
@@ -503,17 +486,28 @@
     padding: 80px 15px 20px;
   }
 
-  .feedback-container {
-    padding: 25px 20px;
+  .contact-container {
+    padding: 30px 20px;
   }
 
   .ai-title {
     font-size: 1.75rem;
   }
 
+  .contact-item {
+    padding: 15px;
+    gap: 15px;
+  }
+
+  .contact-icon {
+    width: 45px;
+    height: 45px;
+  }
+
   .ai-button {
     min-width: 200px;
     padding: 14px 24px;
     font-size: 16px;
+    align-self: center;
   }
 }

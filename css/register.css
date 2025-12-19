@@ -1,175 +1,371 @@
-/* Center the registration container */
-.register-container {
-    max-width: 450px;
-    margin: 60px auto;
-    padding: 30px 40px;
-    border: 3px solid rgb(28, 36, 111);
-    border-radius: 15px;
-    background-color: #f9f9f9;
-    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-    text-align: center;
-    font-family: 'Arial', sans-serif;
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+/* ================= BODY ================= */
+.register-body {
+  overflow-y: auto;
+  /* Using light theme like index page */
+  background: #f5f5f5;
+  position: relative;
+  min-height: 100vh;
 }
 
-.register-container:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 25px rgba(0,0,0,0.3);
-}
-
-/* Heading */
-.register-container h1 {
-    color: rgb(28, 36, 111);
-    margin-bottom: 25px;
-    font-size: 2rem;
-}
-
-/* Form styling */
-.register-container form {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
-}
-
-.register-container label {
-    text-align: left;
-    font-weight: bold;
-    color: rgb(28, 36, 111);
-}
-
-.register-container input {
-    padding: 10px;
-    border: 2px solid rgb(28, 36, 111);
-    border-radius: 8px;
-    font-size: 16px;
-}
-
-.register-container input:focus {
-    outline: none;
-    border-color: rgb(40, 50, 150);
-    box-shadow: 0 0 5px rgba(28, 36, 111, 0.5);
-}
-
-/* Button styling */
-.register-container button {
-    padding: 12px;
-    background-color: rgb(28, 36, 111);
-    color: white;
-    font-size: 16px;
-    font-weight: bold;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.register-container button:hover {
-    background-color: rgb(18, 24, 90);
-}
-
-/* Login link */
-.login-link {
-    margin-top: 15px;
-    font-size: 14px;
-}
-
-.login-link a {
-    color: rgb(28, 36, 111);
-    text-decoration: none;
-    font-weight: bold;
-}
-
-.login-link a:hover {
-    text-decoration: underline;
-}
-
-/* Checkbox wrapper to align checkbox and label nicely */
-.register-container .checkbox-wrapper {
-    display: flex;
-    align-items: center;
-    gap: 8px; /* space between checkbox and text */
-    font-size: 14px;
-    color: rgb(28, 36, 111);
-    cursor: pointer;
-    margin-top: -5px;
-    margin-bottom: 10px;
-}
-
-/* Slight hover effect for label text */
-.register-container .checkbox-wrapper label:hover {
-    color: rgb(40, 50, 150);
-}
-
-/* Loader overlay */
-.loader-overlay {
+/* Add background image like index page */
+.register-body::before {
+  content: "";
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(255, 255, 255, 0.8);
-  display: none;              /* hidden by default */
-  align-items: center;
+  background-image: url("../images/bg_image.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  opacity: 0.3;
+  z-index: -1;
+}
+
+/* ================= PAGE WRAPPER ================= */
+.page-wrapper {
+  min-height: 100vh;
+  padding: 90px 20px 20px; /* navbar + bottom gap */
+  display: flex;
   justify-content: center;
+  align-items: flex-start;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 1;
+}
+
+/* ================= REGISTER CONTAINER ================= */
+.register-container {
+  width: 100%;
+  max-width: 720px;
+  padding: 40px 50px;
+
+  /* AI/ML glassmorphism effect with light theme like index page */
+  background: rgba(249, 249, 249, 0.95);
+  backdrop-filter: blur(10px);
+  border: 3px solid rgb(28, 36, 111);
+  border-radius: 20px;
+
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 40px rgba(0, 188, 212, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.1);
+
+  text-align: center;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Added shattered blue pattern inside form container */
+.register-container::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    135deg,
+    rgba(28, 36, 111, 0.03) 0%,
+    rgba(0, 188, 212, 0.05) 25%,
+    rgba(28, 36, 111, 0.04) 50%,
+    rgba(0, 188, 212, 0.03) 75%,
+    rgba(28, 36, 111, 0.05) 100%
+  );
+  background-size: 400% 400%;
+  animation: shatteredShift 15s ease infinite;
+  clip-path: polygon(
+    0% 0%,
+    20% 0%,
+    15% 8%,
+    25% 12%,
+    30% 5%,
+    40% 10%,
+    45% 3%,
+    55% 7%,
+    60% 0%,
+    80% 0%,
+    75% 15%,
+    85% 20%,
+    90% 12%,
+    100% 18%,
+    100% 30%,
+    95% 35%,
+    88% 28%,
+    92% 40%,
+    100% 45%,
+    100% 65%,
+    93% 70%,
+    97% 78%,
+    100% 82%,
+    100% 100%,
+    78% 100%,
+    82% 92%,
+    70% 95%,
+    65% 88%,
+    58% 100%,
+    42% 100%,
+    38% 93%,
+    30% 97%,
+    22% 90%,
+    18% 100%,
+    0% 100%,
+    5% 85%,
+    0% 75%,
+    8% 68%,
+    3% 55%,
+    0% 50%,
+    7% 42%,
+    0% 35%,
+    10% 28%,
+    5% 18%,
+    0% 12%
+  );
+  opacity: 0.6;
+  z-index: -1;
+}
+
+.register-container:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.3), 0 0 45px rgba(0, 188, 212, 0.4), inset 0 0 25px rgba(255, 255, 255, 0.15);
+}
+
+@keyframes shatteredShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Neural network canvas inside form container */
+.neural-inside-form {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.2;
+}
+
+/* HEADING */
+.register-container h1 {
+  color: rgb(28, 36, 111);
+  margin-bottom: 25px;
+  font-size: 2rem;
+  font-weight: 600;
+}
+
+/* FORM GRID */
+.register-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px 20px;
+  position: relative;
+  z-index: 1;
+}
+
+/* FIELD */
+.form-field {
+  display: flex;
   flex-direction: column;
-  z-index: 9999;
 }
 
-/* Spinner */
-.spinner {
-  width: 45px;
-  height: 45px;
-  border: 5px solid #ccc;
-  border-top: 5px solid #1c246f;
-  border-radius: 50%;
-  animation: spin 1s linear infinite;
-}
-
-.loader-overlay p {
-  margin-top: 15px;
+.form-field label {
+  text-align: left;
   font-weight: bold;
-  color: #1c246f;
+  color: rgb(28, 36, 111);
+  font-size: 1rem;
 }
 
-/* Password rules list */
+.form-field input {
+  padding: 12px;
+  border: 2px solid rgb(28, 36, 111);
+  border-radius: 8px;
+  font-size: 16px;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+}
+
+.form-field input:focus {
+  outline: none;
+  border-color: #00bcd4;
+  box-shadow: 0 0 10px rgba(0, 188, 212, 0.5);
+}
+
+/* PASSWORD RULES */
 .password-rules {
-    margin: -5px 0 10px 18px;
-    padding: 0;
-    text-align: left;
-    font-size: 13px;
-}
-
-.password-rules li {
-    color: red;                 /* default invalid */
-    margin-bottom: 4px;
-    transition: color 0.2s ease;
-}
-
-/* Rule satisfied */
-.password-rules li.valid {
-    color: #2e7d32;             /* green */
-}
-
-.password-rules {
-    display: none;
+  margin: 6px 0 10px 18px;
+  padding: 0;
+  text-align: left;
+  font-size: 13px;
+  display: none;
+  position: relative;
+  z-index: 2;
 }
 
 .password-rules.show {
     display: block;
 }
 
-
-
-
-/* Responsive for mobile */
-@media (max-width: 430px) {
-    .register-container {
-        margin: 40px 20px;
-        padding: 20px;
-    }
+.password-rules li {
+    color: red;
+    margin-bottom: 4px;
 }
 
-@keyframes spin {
+.password-rules li.valid {
+    color: #2e7d32;
+}
+
+/* CHECKBOX */
+.checkbox-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  color: rgb(28, 36, 111);
+  margin-top: 6px;
+}
+
+/* ACTIONS */
+.form-actions {
+  grid-column: span 2;
+}
+
+.form-actions button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, rgb(28, 36, 111) 0%, #00bcd4 100%);
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.form-actions button:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 15px rgba(0, 188, 212, 0.6);
+}
+
+.form-actions button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* LOGIN LINK */
+.login-link {
+  margin-top: 15px;
+  font-size: 14px;
+  position: relative;
+  z-index: 1;
+}
+
+.login-link a {
+  color: #00bcd4;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
+
+/* LOADER */
+.loader-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: none;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 9999;
+}
+
+/* Neural network loader styling */
+.loader-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+.ml-loader {
+  animation: rotate 4s linear infinite;
+}
+
+@keyframes rotate {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.node {
+  animation: pulse 2s ease-in-out infinite alternate;
+}
+
+.node.input { animation-delay: 0s; }
+.node.central { animation-delay: 0.5s; }
+.node.output { animation-delay: 1s; }
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  100% { transform: scale(1.2); }
+}
+
+.connection {
+  stroke-dasharray: 200;
+  stroke-dashoffset: 200;
+  animation: draw 2s ease-in-out infinite alternate;
+}
+
+@keyframes draw {
+  to { stroke-dashoffset: 0; }
+}
+
+.loader-text {
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+  text-shadow: 0 0 10px rgba(0, 188, 212, 0.8);
+}
+
+/* MOBILE */
+@media (max-width: 768px) {
+  .register-form {
+    grid-template-columns: 1fr;
+  }
+
+  .form-actions {
+    grid-column: span 1;
+  }
+
+  .register-container {
+    padding: 30px 25px;
+  }
+}
+
+@media (max-width: 430px) {
+  .page-wrapper {
+    min-height: 100svh;
+    padding: 90px 20px 20px;
+  }
+
+  .register-container {
+    padding: 30px 20px;
+  }
 }

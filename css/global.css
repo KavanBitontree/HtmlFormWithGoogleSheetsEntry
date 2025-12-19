@@ -1,12 +1,92 @@
-html, body {
+/* CSS Variables for Light/Dark Mode */
+:root {
+  --bg-image-light: url("/images/bg_image.jpg");
+  --bg-image-dark: url("/images/dark/bg_image_dark.jpg");
+
+  /* Light theme colors */
+  --text-primary-light: #333;
+  --text-secondary-light: #555;
+  --background-card-light: rgba(249, 249, 249, 0.95);
+  --border-color-light: rgb(28, 36, 111);
+  --accent-color-light: #00bcd4;
+  --secondary-accent-light: rgb(28, 36, 111);
+  --gradient-start-light: #1a237e;
+
+  /* Dark theme colors */
+  --text-primary-dark: #e0e0e0;
+  --text-secondary-dark: #b0b0b0;
+  --background-card-dark: rgba(30, 30, 40, 0.95);
+  --border-color-dark: #5d6da8;
+  --accent-color-dark: #4fc3f7;
+  --secondary-accent-dark: #64b5f6;
+  --gradient-start-dark: #4a5db0;
+}
+
+html,
+body {
   height: 100%;
   margin: 0;
+  overflow-x: hidden;
 }
 
 body {
-  background-image: url("../images/bg_image.jpg");
-  background-size: cover;        /* Fill entire screen */
-  background-position: center;   /* Center image */
-  background-repeat: no-repeat;  /* No tiling */
-  background-attachment: fixed;  /* Optional: parallax effect */
+  background-image: var(--bg-image-light);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  position: relative;
+  transition: background-image 0.5s ease;
+}
+
+/* Added AI/ML themed overlay effect */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(28, 36, 111, 0.1) 0%, rgba(0, 188, 212, 0.05) 100%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Added animated grid pattern for tech feel */
+body::after {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: linear-gradient(rgba(0, 188, 212, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 188, 212, 0.03) 1px, transparent 1px);
+  background-size: 50px 50px;
+  pointer-events: none;
+  z-index: 0;
+  animation: gridMove 20s linear infinite;
+}
+
+/* Dark mode styles */
+body.dark-mode {
+  background-image: var(--bg-image-dark) !important;
+}
+
+body.dark-mode::before {
+  background: linear-gradient(135deg, rgba(90, 100, 180, 0.15) 0%, rgba(79, 195, 247, 0.1) 100%) !important;
+}
+
+body.dark-mode::after {
+  background-image: linear-gradient(rgba(79, 195, 247, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(79, 195, 247, 0.05) 1px, transparent 1px) !important;
+}
+
+@keyframes gridMove {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(50px, 50px);
+  }
 }

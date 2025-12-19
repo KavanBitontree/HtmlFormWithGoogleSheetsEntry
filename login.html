@@ -10,49 +10,59 @@
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/error.css">
 </head>
-<body>
+
+<body class="login-body">
 
 <!-- Navbar -->
 <nav class="navbar">
-    <div class="logo">MySite</div>
+  <div class="logo">
+    <span class="logo-text">AI</span>
+    <span class="logo-separator">|</span>
+    <span class="logo-text">Portfolio</span>
+  </div>
 
-    <div class="hamburger" id="hamburger">
-        <span></span><span></span><span></span>
-    </div>
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
 
-    <ul class="nav-links" id="navLinks">
-        <!-- <li id="welcomeLi"><a href="index.html">Home</a></li> -->
-        <li id="registerLi"><a href="register.html">Register</a></li>
-        <!-- <li id="feedbackLi"><a href="feedback_form.html">Feedback</a></li> -->
-    </ul>
+  <ul class="nav-links" id="navLinks">
+    <li id="registerLi"><a href="register.html">Register</a></li>
+  </ul>
 </nav>
 
-<!-- Login Form -->
-<div class="login-container">
-    <h1>Login</h1>
+<!-- PAGE WRAPPER -->
+<div class="page-wrapper">
 
-    <form id="loginForm" novalidate>
+    <!-- Login Form -->
+    <div class="login-container">
+        <!-- Added neural network canvas inside form container -->
+        <canvas id="neuralCanvas" class="neural-inside-form"></canvas>
 
-        <label>Email <span class="required">*</span></label>
-        <input type="text" id="email" placeholder="Enter your email">
-        <small class="error" id="emailError"></small>
+        <h1>Login</h1>
 
-        <label>Password <span class="required">*</span></label>
-        <input type="password" id="password" placeholder="Enter your password">
-        <small class="error" id="passwordError"></small>
+        <form id="loginForm" novalidate>
 
-        <button type="submit">Login</button>
-    </form>
+            <label>Email <span class="required">*</span></label>
+            <input type="text" id="email" placeholder="Enter your email">
+            <small class="error" id="emailError"></small>
 
-    <p class="signup-link">
-        Don't have an account? <a href="register.html">Register</a>
-    </p>
+            <label>Password <span class="required">*</span></label>
+            <input type="password" id="password" placeholder="Enter your password">
+            <small class="error" id="passwordError"></small>
+
+            <button type="submit">Login</button>
+        </form>
+
+        <p class="signup-link">
+            Don't have an account? <a href="register.html">Register</a>
+        </p>
+    </div>
+
 </div>
 
+<script src="utils/config.js"></script>
 <script src="js/navbar.js"></script>
 <script type="module" src="js/login.js"></script>
-<script src="utils/config.js"></script>
-
-
+<script src="js/login-neural.js"></script>
 </body>
 </html>

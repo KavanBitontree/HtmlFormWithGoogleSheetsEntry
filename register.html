@@ -10,76 +10,126 @@
     <link rel="stylesheet" href="css/global.css">
     <link rel="stylesheet" href="css/error.css">
 </head>
-<body>
 
-<!-- Loader -->
+<body class="register-body">
+
+<!-- AI/ML themed loader with neural network animation -->
 <div id="loader" class="loader-overlay">
-  <div class="spinner"></div>
-  <p>Submitting registration details...</p>
+  <div class="loader-content">
+    <!-- Neural Network Loader SVG -->
+    <svg class="ml-loader" width="120" height="120" viewBox="0 0 120 120">
+      <!-- Central node -->
+      <circle class="node central" cx="60" cy="60" r="8" fill="#00bcd4"/>
+
+      <!-- Input layer nodes -->
+      <circle class="node input" cx="20" cy="30" r="5" fill="rgb(28, 36, 111)"/>
+      <circle class="node input" cx="20" cy="60" r="5" fill="rgb(28, 36, 111)"/>
+      <circle class="node input" cx="20" cy="90" r="5" fill="rgb(28, 36, 111)"/>
+
+      <!-- Output layer nodes -->
+      <circle class="node output" cx="100" cy="30" r="5" fill="#00bcd4"/>
+      <circle class="node output" cx="100" cy="60" r="5" fill="#00bcd4"/>
+      <circle class="node output" cx="100" cy="90" r="5" fill="#00bcd4"/>
+
+      <!-- Connections with animation -->
+      <line class="connection" x1="20" y1="30" x2="60" y2="60" stroke="#00bcd4" stroke-width="2"/>
+      <line class="connection" x1="20" y1="60" x2="60" y2="60" stroke="#00bcd4" stroke-width="2"/>
+      <line class="connection" x1="20" y1="90" x2="60" y2="60" stroke="#00bcd4" stroke-width="2"/>
+
+      <line class="connection" x1="60" y1="60" x2="100" y2="30" stroke="rgb(28, 36, 111)" stroke-width="2"/>
+      <line class="connection" x1="60" y1="60" x2="100" y2="60" stroke="rgb(28, 36, 111)" stroke-width="2"/>
+      <line class="connection" x1="60" y1="60" x2="100" y2="90" stroke="rgb(28, 36, 111)" stroke-width="2"/>
+    </svg>
+    <p class="loader-text">Processing registration...</p>
+  </div>
 </div>
 
 <!-- Navbar -->
 <nav class="navbar">
-    <div class="logo">MySite</div>
-    <div class="hamburger" id="hamburger">
-        <span></span><span></span><span></span>
-    </div>
-    <ul class="nav-links" id="navLinks">
-        <!-- <li><a href="index.html">Home</a></li> -->
-        <li><a href="login.html">Login</a></li>
-        <!-- <li><a href="feedback_form.html">Feedback</a></li> -->
-    </ul>
+  <div class="logo">
+    <span class="logo-text">AI</span>
+    <span class="logo-separator">|</span>
+    <span class="logo-text">Portfolio</span>
+  </div>
+
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="login.html">Login</a></li>
+  </ul>
 </nav>
 
-<!-- Registration Form -->
-<div class="register-container">
-    <h1>Register</h1>
+<!-- PAGE WRAPPER -->
+<div class="page-wrapper">
 
-    <form id="registerForm" novalidate>
+    <div class="register-container">
+        <!-- Added neural network canvas inside form container -->
+        <canvas id="neuralCanvas" class="neural-inside-form"></canvas>
 
-        <label>Full Name <span class="required">*</span></label>
-        <input type="text" id="name" placeholder="Enter your full name">
-        <small class="error" id="nameError"></small>
+        <h1>Register</h1>
 
-        <label>Email <span class="required">*</span></label>
-        <input type="text" id="email" placeholder="Enter your email">
-        <small class="error" id="emailError"></small>
+        <form id="registerForm" novalidate class="register-form">
 
-        <label>Password <span class="required">*</span></label>
-        <input type="password" id="password">
-        <small class="error" id="passwordError"></small>
+            <div class="form-field">
+                <label>Full Name <span class="required">*</span></label>
+                <input type="text" id="name" placeholder="Enter your full name">
+                <small class="error" id="nameError"></small>
+            </div>
 
-        <ul id="passwordRules" class="password-rules">
-            <li id="rule-length">Minimum 6 characters</li>
-            <li id="rule-upper">At least one capital letter</li>
-            <li id="rule-lower">At least one small letter</li>
-            <li id="rule-special">At least one special character (# allowed)</li>
-        </ul>
+            <div class="form-field">
+                <label>Email <span class="required">*</span></label>
+                <input type="text" id="email" placeholder="Enter your email">
+                <small class="error" id="emailError"></small>
+            </div>
 
-        <div class="checkbox-wrapper">
-            <input type="checkbox" id="showPassword">
-            <label for="showPassword">Show Password</label>
-        </div>
+            <div class="form-field">
+                <label>Password <span class="required">*</span></label>
+                <input type="password" id="password">
+                <small class="error" id="passwordError"></small>
 
+                <ul id="passwordRules" class="password-rules">
+                    <li id="rule-length">Minimum 6 characters</li>
+                    <li id="rule-upper">At least one capital letter</li>
+                    <li id="rule-lower">At least one small letter</li>
+                    <li id="rule-special">At least one special character (# allowed)</li>
+                </ul>
 
-        <label>Confirm Password <span class="required">*</span></label>
-        <input type="password" id="confirm-password">
-        <small class="error" id="confirmPasswordError"></small>
+                <div class="checkbox-wrapper">
+                    <input type="checkbox" id="showPassword">
+                    <label for="showPassword">Show Password</label>
+                </div>
+            </div>
 
-        <div class="checkbox-wrapper">
-            <input type="checkbox" id="showConfirmPassword">
-            <label for="showConfirmPassword">Show Password</label>
-        </div>
+            <div class="form-field">
+                <label>Confirm Password <span class="required">*</span></label>
+                <input type="password" id="confirm-password">
+                <small class="error" id="confirmPasswordError"></small>
 
-        <button type="submit">Register</button>
-    </form>
+                <div class="checkbox-wrapper">
+                    <input type="checkbox" id="showConfirmPassword">
+                    <label for="showConfirmPassword">Show Password</label>
+                </div>
+            </div>
 
-    <p class="login-link">Already have an account? <a href="login.html">Login</a></p>
+            <div class="form-actions">
+                <button type="submit">Register</button>
+            </div>
+
+        </form>
+
+        <p class="login-link">
+            Already have an account? <a href="login.html">Login</a>
+        </p>
+    </div>
+
 </div>
+
 <script src="utils/config.js"></script>
 <script src="js/navbar.js"></script>
 <script type="module" src="js/register.js"></script>
-
+<script src="js/register-neural.js"></script>
 
 </body>
 </html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Experience</title>
+
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/experience.css">
+    <link rel="stylesheet" href="css/global.css">
+    <link rel="stylesheet" href="css/error.css">
+
+    <style>
+        .experience-link {
+            color: #00bcd4;
+            font-weight: bold;
+            cursor: default;
+            margin-right: 10px;
+        }
+    </style>
+</head>
+
+<body class="experience-body">
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="logo">
+    <span class="logo-text">AI</span>
+    <span class="logo-separator">|</span>
+    <span class="logo-text">Portfolio</span>
+  </div>
+
+  <div class="hamburger" id="hamburger">
+    <span></span><span></span><span></span>
+  </div>
+
+  <ul class="nav-links" id="navLinks">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About</a></li>
+    <li><a href="contact.html">Contact</a></li>
+
+    <li id="emailLi" class="experience-link"></li>
+    <li id="logoutLi">
+      <a href="#" id="logoutBtn">Logout</a>
+    </li>
+  </ul>
+</nav>
+
+<!-- PAGE WRAPPER -->
+<div class="page-wrapper">
+
+  <!-- AI/ML themed experience card -->
+  <div class="experience-container">
+    <!-- Added neural network canvas inside form container -->
+    <canvas id="neuralCanvas" class="neural-inside-form"></canvas>
+
+    <h1 class="ai-title">Professional Experience</h1>
+    <p class="subtitle">My journey in the tech industry</p>
+
+    <!-- Professional Experience -->
+    <div class="experience-content">
+      <!-- Removed experience image at top -->
+
+      <!-- Added data-experience-id attribute to target specific experience -->
+      <div class="experience-card" data-experience-id="bitontree">
+        <div class="experience-header">
+          <div class="position-info">
+            <h2 class="position-title">AI/ML Intern</h2>
+            <h3 class="company-name">Bitontree Solutions</h3>
+            <div class="location">Remote</div>
+          </div>
+          <div class="duration-info">
+            <div class="duration">Dec 2024 - Present</div>
+            <!-- Added unique class for internship badge -->
+            <div class="experience-type experience-internship">[INTERNSHIP]</div>
+          </div>
+        </div>
+
+        <!-- Added PDF preview with thumbnail for AI/ML intern -->
+        <div class="pdf-preview">
+          <h4>INTERNSHIP CERTIFICATE:</h4>
+          <div class="pdf-thumbnail-wrapper" onclick="openPDFModal('docs/bitontree-certificate.pdf')">
+            <canvas class="pdf-thumbnail" data-pdf="docs/bitontree-certificate.pdf"></canvas>
+            <div class="pdf-overlay">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
+                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+              </svg>
+              <p>Click to view</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Existing Backend Developer experience -->
+      <div class="experience-card" data-experience-id="techorses">
+        <div class="experience-header">
+          <div class="position-info">
+            <h2 class="position-title">Backend Developer</h2>
+            <h3 class="company-name">Techorses</h3>
+            <div class="location">Vadodara, Gujarat (Remote)</div>
+          </div>
+          <div class="duration-info">
+            <div class="duration">Apr 2025 - May 2025</div>
+            <!-- Added unique class for freelance badge -->
+            <div class="experience-type experience-freelance">[FREELANCE]</div>
+          </div>
+        </div>
+
+        <div class="responsibilities">
+          <h4>RESPONSIBILITIES:</h4>
+          <ul>
+            <li>• Built and deployed secured applications using Python Flask with MySQL databases</li>
+            <li>• Integrated Razorpay for secure payment processing and Delhivery API for logistics</li>
+            <li>• Deployed Flask applications on Apache2 server with production-ready configurations</li>
+            <li>• Implemented Google OAuth for secure user authentication and authorization</li>
+            <li>• Developed URL parsing functionality for Open Graph/meta tags to generate dynamic link previews</li>
+            <li>• Optimized database queries and API response times for better performance</li>
+          </ul>
+        </div>
+
+        <div class="technologies">
+          <h4>TECHNOLOGIES USED:</h4>
+          <div class="tech-tags">
+            <span class="tech-tag">Python</span>
+            <span class="tech-tag">Flask</span>
+            <span class="tech-tag">MySQL</span>
+            <span class="tech-tag">Apache2</span>
+            <span class="tech-tag">Razorpay API</span>
+            <span class="tech-tag">Delhivery API</span>
+            <span class="tech-tag">Google OAuth</span>
+          </div>
+        </div>
+
+        <div class="achievements">
+          <h4>KEY ACHIEVEMENTS:</h4>
+          <ul>
+            <li>• Successfully deployed multiple production applications</li>
+            <li>• Improved API response times by implementing efficient caching strategies</li>
+            <li>• Integrated multiple third-party services seamlessly</li>
+          </ul>
+        </div>
+
+        <div class="links">
+          <a href="#" class="experience-link-btn" id="liveUrlBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M10 6v2H5v11h11v-5h2v6a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V7a1 1 0 0 1 1-1h6zM21 3v8h-2V6.413l-7.793 7.794-1.414-1.414L17.585 5H13V3h8z" />
+            </svg>
+            LIVE HERE
+          </a>
+          <a href="#" class="experience-link-btn" id="githubUrlBtn">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 2.807 1.834 3.297 1.23 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z" />
+            </svg>
+            GITHUB
+          </a>
+        </div>
+
+        <!-- Updated PDF preview to use thumbnail -->
+        <div class="pdf-preview">
+          <h4>PREVIEW OF COMPLETION CERTIFICATE:</h4>
+          <div class="pdf-thumbnail-wrapper" onclick="openPDFModal('docs/Kavan_Gajera.pdf')">
+            <canvas class="pdf-thumbnail" data-pdf="docs/Kavan_Gajera.pdf"></canvas>
+            <div class="pdf-overlay">
+              <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
+                <path d="M12 4.5C7 4.5 2.73 7.61 1 12c1.73 4.39 6 7.5 11 7.5s9.27-3.11 11-7.5c-1.73-4.39-6-7.5-11-7.5zM12 17c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5zm0-8c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/>
+              </svg>
+              <p>Click to view</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<!-- Added PDF Modal -->
+<div id="pdfModal" class="pdf-modal">
+  <div class="pdf-modal-content">
+    <span class="pdf-modal-close" onclick="closePDFModal()">&times;</span>
+    <iframe id="pdfModalIframe" src=""></iframe>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script src="utils/config.js"></script>
+<script src="js/navbar.js"></script>
+<script src="js/experience.js"></script>
+<script src="js/experience-neural.js"></script>
+
+</body>
+</html>

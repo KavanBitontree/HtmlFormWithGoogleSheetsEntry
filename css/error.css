@@ -1,23 +1,23 @@
 .required {
-    color: red;
-    margin-left: 3px;
+  color: red;
+  margin-left: 3px;
 }
 
 .error {
-    color: red;
-    font-size: 13px;
-    text-align: left;
-    display: block;
+  color: red;
+  font-size: 13px;
+  text-align: left;
+  display: block;
 }
 
 /* Highlight input and textarea on error */
 input.error-border,
 textarea.error-border {
-    border-color: red;
+  border-color: red;
 }
 
 /* On focus remove red */
 input:focus,
 textarea:focus {
-    border-color: rgb(28, 36, 111);
+  border-color: rgb(28, 36, 111);
 }
