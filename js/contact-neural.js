@@ -15,6 +15,26 @@ const maxDistance = 150
 // Mouse position
 const mouse = { x: null, y: null }
 
+// Check if dark mode is active
+function isDarkMode() {
+  return document.body.classList.contains("dark-mode")
+}
+
+// Get colors based on theme
+function getNodeColor() {
+  return isDarkMode() ? "rgba(255, 255, 255, 0.8)" : "rgba(28, 36, 111, 0.8)"
+}
+
+function getNodeShadowColor() {
+  return isDarkMode() ? "rgba(255, 255, 255, 0.5)" : "rgba(28, 36, 111, 0.5)"
+}
+
+function getConnectionColor(opacity) {
+  return isDarkMode() 
+    ? `rgba(255, 255, 255, ${opacity})` 
+    : `rgba(28, 36, 111, ${opacity})`
+}
+
 // Resize handler
 window.addEventListener("resize", () => {
   width = canvas.width = contactContainer.offsetWidth
@@ -68,11 +88,11 @@ class Node {
   draw() {
     ctx.beginPath()
     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
-    ctx.fillStyle = "rgba(28, 36, 111, 0.8)"
+    ctx.fillStyle = getNodeColor()
     ctx.fill()
 
     ctx.shadowBlur = 10
-    ctx.shadowColor = "rgba(28, 36, 111, 0.5)"
+    ctx.shadowColor = getNodeShadowColor()
     ctx.fill()
     ctx.shadowBlur = 0
   }
@@ -99,7 +119,7 @@ function drawConnections() {
         ctx.beginPath()
         ctx.moveTo(nodes[i].x, nodes[i].y)
         ctx.lineTo(nodes[j].x, nodes[j].y)
-        ctx.strokeStyle = `rgba(28, 36, 111, ${opacity})`
+        ctx.strokeStyle = getConnectionColor(opacity)
         ctx.lineWidth = 1.5
         ctx.stroke()
       }

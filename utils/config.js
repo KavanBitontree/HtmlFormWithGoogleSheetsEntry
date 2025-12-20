@@ -16,3 +16,11 @@ const CONFIG = {
         MIN_LENGTH: 6
     }
 };
+
+// Export for ES6 modules
+export { CONFIG };
+
+// Also make it available globally for non-module scripts
+if (typeof window !== 'undefined') {
+    window.CONFIG = CONFIG;
+}

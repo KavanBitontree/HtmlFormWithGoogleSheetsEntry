@@ -1,5 +1,5 @@
 import { showError, clearError } from "../utils/utility.js"
-import { CONFIG } from "../config.js" // Declare CONFIG variable
+import { CONFIG } from "../utils/config.js" // Declare CONFIG variable
 
 /* ================= AUTH GUARD ================= */
 if (localStorage.getItem("isLoggedIn") !== "true") {

@@ -1,6 +1,7 @@
 /* ================= CHECK IF LOGGED IN USER COMES IN REGISTER REDIRECT TO WELCOME ================= */
 
 import { updateRule,clearError,showError } from '../utils/utility.js';
+import { CONFIG } from '../utils/config.js';
 
 (function() {
     const isLoggedIn = localStorage.getItem("isLoggedIn");

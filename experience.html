@@ -30,20 +30,40 @@
     <span class="logo-text">Portfolio</span>
   </div>
 
-  <div class="hamburger" id="hamburger">
-    <span></span><span></span><span></span>
+  <div class="nav-right">
+    <!-- Theme Toggle Button -->
+    <button class="theme-toggle" id="themeToggle" aria-label="Toggle dark mode">
+      <svg id="sunIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="5"/>
+        <line x1="12" y1="1" x2="12" y2="3"/>
+        <line x1="12" y1="21" x2="12" y2="23"/>
+        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+        <line x1="1" y1="12" x2="3" y2="12"/>
+        <line x1="21" y1="12" x2="23" y2="12"/>
+        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+      </svg>
+      <svg id="moonIcon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="display: none;">
+        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+      </svg>
+    </button>
+
+    <div class="hamburger" id="hamburger">
+      <span></span><span></span><span></span>
+    </div>
+
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+
+      <li id="emailLi" class="experience-link"></li>
+      <li id="logoutLi">
+        <a href="#" id="logoutBtn">Logout</a>
+      </li>
+    </ul>
   </div>
-
-  <ul class="nav-links" id="navLinks">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="about.html">About</a></li>
-    <li><a href="contact.html">Contact</a></li>
-
-    <li id="emailLi" class="experience-link"></li>
-    <li id="logoutLi">
-      <a href="#" id="logoutBtn">Logout</a>
-    </li>
-  </ul>
 </nav>
 
 <!-- PAGE WRAPPER -->
@@ -67,10 +87,10 @@
           <div class="position-info">
             <h2 class="position-title">AI/ML Intern</h2>
             <h3 class="company-name">Bitontree Solutions</h3>
-            <div class="location">Remote</div>
+            <div class="location">On site</div>
           </div>
           <div class="duration-info">
-            <div class="duration">Dec 2024 - Present</div>
+            <div class="duration">Dec 2025 - Present</div>
             <!-- Added unique class for internship badge -->
             <div class="experience-type experience-internship">[INTERNSHIP]</div>
           </div>
@@ -185,6 +205,7 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
 <script src="utils/config.js"></script>
 <script src="js/navbar.js"></script>
+<script src="js/scroll-handler.js"></script>
 <script src="js/experience.js"></script>
 <script src="js/experience-neural.js"></script>
 

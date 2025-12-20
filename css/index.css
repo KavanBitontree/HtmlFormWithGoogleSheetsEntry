@@ -1,14 +1,26 @@
 /* ================= PAGE WRAPPER ================= */
 .page-wrapper {
-  min-height: 100vh;
+  min-height: calc(100vh - 70px);
   padding: 110px 20px 53px;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   box-sizing: border-box;
   background: transparent;
   position: relative;
   z-index: 1;
+}
+
+/* When content overflows, align to start */
+.page-wrapper:has(#portfolio) {
+  align-items: flex-start;
+}
+
+/* Center when content fits */
+@media (min-height: 800px) {
+  .page-wrapper {
+    align-items: center;
+  }
 }
 
 /* ================= HOME BODY ================= */
@@ -23,6 +35,10 @@
   margin-right: 10px;
 }
 
+body.dark-mode .user-email {
+  color: #4fc3f7;
+}
+
 /* Enhanced portfolio card with glassmorphism and AI theme */
 #portfolio {
   display: flex;
@@ -34,7 +50,7 @@
   border-radius: 20px;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2), 0 0 40px rgba(0, 188, 212, 0.3), inset 0 0 20px rgba(255, 255, 255, 0.1);
   overflow: hidden;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
   font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
   position: relative;
 }
@@ -42,6 +58,17 @@
 #portfolio:hover {
   transform: translateY(-5px);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3), 0 0 60px rgba(0, 188, 212, 0.5), inset 0 0 30px rgba(255, 255, 255, 0.1);
+}
+
+/* Dark mode portfolio card */
+body.dark-mode #portfolio {
+  background: rgba(26, 31, 58, 0.95);
+  border-color: #4a5db0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 40px rgba(79, 195, 247, 0.3), inset 0 0 20px rgba(79, 195, 247, 0.05);
+}
+
+body.dark-mode #portfolio:hover {
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 60px rgba(79, 195, 247, 0.5), inset 0 0 30px rgba(79, 195, 247, 0.1);
 }
 
 /* ================= LEFT COLUMN ================= */
@@ -67,6 +94,12 @@
   width: fit-content;
   box-shadow: 0 4px 15px rgba(0, 188, 212, 0.4);
   animation: pulse 2s ease-in-out infinite;
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .ai-badge {
+  background: linear-gradient(135deg, #4fc3f7 0%, #4a5db0 100%);
+  box-shadow: 0 4px 15px rgba(79, 195, 247, 0.4);
 }
 
 @keyframes pulse {
@@ -76,6 +109,20 @@
   }
   50% {
     box-shadow: 0 4px 25px rgba(0, 188, 212, 0.8);
+  }
+}
+
+body.dark-mode .ai-badge {
+  animation: pulseDark 2s ease-in-out infinite;
+}
+
+@keyframes pulseDark {
+  0%,
+  100% {
+    box-shadow: 0 4px 15px rgba(79, 195, 247, 0.4);
+  }
+  50% {
+    box-shadow: 0 4px 25px rgba(79, 195, 247, 0.8);
   }
 }
 
@@ -89,6 +136,14 @@
   font-weight: 800;
   letter-spacing: -1px;
   text-shadow: 0 2px 10px rgba(0, 188, 212, 0.2);
+  transition: all 0.3s ease;
+}
+
+body.dark-mode .portfolio-left h1 {
+  background: linear-gradient(135deg, #4fc3f7 0%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
 .portfolio-left h3 {
@@ -97,6 +152,11 @@
   font-weight: 500;
   font-size: 1.1rem;
   line-height: 1.6;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode .portfolio-left h3 {
+  color: #b0b0b0;
 }
 
 .portfolio-left p {
@@ -104,6 +164,11 @@
   font-size: 1.05rem;
   line-height: 1.8;
   margin-bottom: 30px;
+  transition: color 0.3s ease;
+}
+
+body.dark-mode .portfolio-left p {
+  color: #d0d0d0;
 }
 
 .tech-skills {
@@ -127,11 +192,23 @@
   overflow: visible;
 }
 
+body.dark-mode .skill-tag {
+  background: rgba(79, 195, 247, 0.15);
+  color: #4fc3f7;
+  border-color: rgba(79, 195, 247, 0.4);
+}
+
 .skill-tag:hover {
   background: rgba(0, 188, 212, 0.2);
   border-color: #00bcd4;
   transform: translateY(-2px);
   box-shadow: 0 4px 12px rgba(0, 188, 212, 0.3);
+}
+
+body.dark-mode .skill-tag:hover {
+  background: rgba(79, 195, 247, 0.25);
+  border-color: #4fc3f7;
+  box-shadow: 0 4px 12px rgba(79, 195, 247, 0.4);
 }
 
 /* Fixed skill progress bar to show on hover */
@@ -157,6 +234,11 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
+body.dark-mode .skill-progress {
+  background: rgba(26, 31, 58, 0.95);
+  border-color: rgba(79, 195, 247, 0.6);
+}
+
 .skill-tag:hover .skill-progress {
   opacity: 1;
   top: calc(100% + 15px);
@@ -171,6 +253,11 @@
   border: 1px solid rgba(0, 188, 212, 0.3);
 }
 
+body.dark-mode .skill-progress-bar-container {
+  background: rgba(100, 100, 120, 0.4);
+  border-color: rgba(79, 195, 247, 0.4);
+}
+
 .skill-progress-bar {
   height: 100%;
   background: linear-gradient(90deg, #1a237e 0%, rgb(28, 36, 111) 100%);
@@ -179,6 +266,10 @@
   transition: width 1.5s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.3);
   transform-origin: left center;
+}
+
+body.dark-mode .skill-progress-bar {
+  background: linear-gradient(90deg, #4a5db0 0%, #4fc3f7 100%);
 }
 
 .skill-percentage {
@@ -190,6 +281,11 @@
   text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
 }
 
+body.dark-mode .skill-percentage {
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+}
+
 /* ================= RIGHT COLUMN ================= */
 .portfolio-right {
   flex: 1;
@@ -199,6 +295,11 @@
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: background 0.3s ease;
+}
+
+body.dark-mode .portfolio-right {
+  background: linear-gradient(135deg, rgba(26, 31, 58, 0.95) 0%, rgba(79, 195, 247, 0.85) 100%);
 }
 
 /* Added logo container with progress bar support */
@@ -251,6 +352,10 @@
   transition: all 0.3s ease;
 }
 
+body.dark-mode .ml-logo {
+  filter: drop-shadow(0 0 15px rgba(79, 195, 247, 0.5)) brightness(1.3);
+}
+
 .apple-logo {
   width: 65px;
   height: 65px;
@@ -293,6 +398,10 @@
   animation-play-state: paused;
 }
 
+body.dark-mode .logo-container:hover .ml-logo {
+  filter: drop-shadow(0 0 30px rgba(79, 195, 247, 1)) brightness(1.6);
+}
+
 .logo-container:nth-child(6):hover .openai-logo {
   transform: scale(1.2);
 }
@@ -320,6 +429,11 @@
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
 }
 
+body.dark-mode .logo-progress {
+  background: rgba(26, 31, 58, 0.95);
+  border-color: rgba(79, 195, 247, 0.6);
+}
+
 .logo-container:hover .logo-progress {
   opacity: 1;
   top: calc(100% + 15px);
@@ -334,6 +448,11 @@
   border: 1px solid rgba(0, 188, 212, 0.3);
 }
 
+body.dark-mode .logo-progress-bar-container {
+  background: rgba(100, 100, 120, 0.4);
+  border-color: rgba(79, 195, 247, 0.4);
+}
+
 .logo-progress-bar {
   height: 100%;
   background: linear-gradient(90deg, #1a237e 0%, rgb(28, 36, 111) 100%);
@@ -344,6 +463,10 @@
   transform-origin: left center;
 }
 
+body.dark-mode .logo-progress-bar {
+  background: linear-gradient(90deg, #4a5db0 0%, #4fc3f7 100%);
+}
+
 .logo-percentage {
   color: #000;
   font-size: 0.75rem;
@@ -351,6 +474,11 @@
   display: block;
   text-align: center;
   text-shadow: 0 1px 2px rgba(255, 255, 255, 0.8);
+}
+
+body.dark-mode .logo-percentage {
+  color: #fff;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
 }
 
 @keyframes floatLogo {
@@ -472,6 +600,12 @@
   transition: all 0.3s ease;
 }
 
+body.dark-mode .neural-network {
+  background: radial-gradient(circle at 20% 30%, rgba(79, 195, 247, 0.25) 0%, transparent 60%),
+    radial-gradient(circle at 80% 70%, rgba(255, 255, 255, 0.1) 0%, transparent 60%),
+    radial-gradient(circle at 50% 50%, rgba(79, 195, 247, 0.2) 0%, transparent 60%);
+}
+
 @keyframes neuralPulse {
   0%,
   100% {
@@ -498,6 +632,10 @@
   border-radius: 50%;
   animation: particleFloat 6s ease-in-out infinite;
   pointer-events: none;
+}
+
+body.dark-mode .particle {
+  background: rgba(79, 195, 247, 0.6);
 }
 
 @keyframes particleFloat {
@@ -548,6 +686,12 @@
   .openai-logo {
     width: 60px;
     height: 60px;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-wrapper {
+    padding: 100px 20px 53px;
   }
 }
 

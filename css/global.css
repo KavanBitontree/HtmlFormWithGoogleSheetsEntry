@@ -1,7 +1,7 @@
 /* CSS Variables for Light/Dark Mode */
 :root {
   --bg-image-light: url("/images/bg_image.jpg");
-  --bg-image-dark: url("/images/dark/bg_image_dark.jpg");
+  --bg-image-dark: url("/images/bg_image_dark.jpg");
 
   /* Light theme colors */
   --text-primary-light: #333;
@@ -27,6 +27,11 @@ body {
   height: 100%;
   margin: 0;
   overflow-x: hidden;
+  overflow-y: auto;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
@@ -80,6 +85,7 @@ body.dark-mode::before {
 body.dark-mode::after {
   background-image: linear-gradient(rgba(79, 195, 247, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(79, 195, 247, 0.05) 1px, transparent 1px) !important;
+ animation: gridMove 20s linear infinite;
 }
 
 @keyframes gridMove {

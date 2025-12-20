@@ -23,6 +23,34 @@ const maxDistance = 300
 // Mouse position
 const mouse = { x: null, y: null }
 
+// Check if dark mode is active
+function isDarkMode() {
+  return document.body.classList.contains("dark-mode")
+}
+
+// Get colors based on theme
+function getNodeColor() {
+  return isDarkMode() ? "rgba(255, 255, 255, 0.5)" : "rgba(100, 200, 255, 0.5)"
+}
+
+function getNodeShadowColor() {
+  return isDarkMode() ? "rgba(255, 255, 255, 0.4)" : "rgba(100, 200, 255, 0.4)"
+}
+
+function getConnectionGradient(x1, y1, x2, y2, opacity) {
+  const gradient = ctx.createLinearGradient(x1, y1, x2, y2)
+  if (isDarkMode()) {
+    gradient.addColorStop(0, `rgba(255, 255, 255, ${opacity})`)
+    gradient.addColorStop(0.5, `rgba(255, 255, 255, ${opacity * 1.2})`)
+    gradient.addColorStop(1, `rgba(255, 255, 255, ${opacity})`)
+  } else {
+    gradient.addColorStop(0, `rgba(100, 200, 255, ${opacity})`)
+    gradient.addColorStop(0.5, `rgba(150, 220, 255, ${opacity})`)
+    gradient.addColorStop(1, `rgba(100, 200, 255, ${opacity})`)
+  }
+  return gradient
+}
+
 // Resize handler
 window.addEventListener("resize", () => {
   updateCanvasSize()
@@ -74,11 +102,11 @@ class Node {
   draw() {
     ctx.beginPath()
     ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2)
-    ctx.fillStyle = "rgba(100, 200, 255, 0.5)"
+    ctx.fillStyle = getNodeColor()
     ctx.fill()
 
     ctx.shadowBlur = 18
-    ctx.shadowColor = "rgba(100, 200, 255, 0.4)"
+    ctx.shadowColor = getNodeShadowColor()
     ctx.fill()
     ctx.shadowBlur = 0
   }
@@ -106,10 +134,7 @@ function drawConnections() {
         ctx.moveTo(nodes[i].x, nodes[i].y)
         ctx.lineTo(nodes[j].x, nodes[j].y)
 
-        const gradient = ctx.createLinearGradient(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y)
-        gradient.addColorStop(0, `rgba(100, 200, 255, ${opacity})`)
-        gradient.addColorStop(0.5, `rgba(150, 220, 255, ${opacity})`)
-        gradient.addColorStop(1, `rgba(100, 200, 255, ${opacity})`)
+        const gradient = getConnectionGradient(nodes[i].x, nodes[i].y, nodes[j].x, nodes[j].y, opacity)
 
         ctx.strokeStyle = gradient
         ctx.lineWidth = 0.9

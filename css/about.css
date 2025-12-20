@@ -25,14 +25,21 @@
 
 /* ================= PAGE WRAPPER ================= */
 .page-wrapper {
-  min-height: 100vh;
+  min-height: calc(100vh - 70px);
   padding: 90px 20px 80px;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   box-sizing: border-box;
   position: relative;
   z-index: 1;
+}
+
+/* Center when content fits */
+@media (min-height: 900px) {
+  .page-wrapper {
+    align-items: center;
+  }
 }
 
 /* Canvas now positioned absolutely within about-container */
@@ -832,4 +839,93 @@
   .pdf-overlay p {
     font-size: 1rem;
   }
+}
+
+/* ================= DARK MODE ================= */
+body.dark-mode .about-body {
+  background: #0f1420;
+}
+
+body.dark-mode .about-body::before {
+  background-image: url("../images/bg_image_dark.jpg");
+  opacity: 0.4;
+}
+
+body.dark-mode .about-container {
+  background: rgba(26, 31, 58, 0.35);
+  border-color: #4a5db0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 40px rgba(79, 195, 247, 0.3), inset 0 0 20px rgba(79, 195, 247, 0.05);
+}
+
+body.dark-mode .about-container::before {
+  background: linear-gradient(
+    135deg,
+    rgba(79, 195, 247, 0.05) 0%,
+    rgba(74, 93, 176, 0.08) 25%,
+    rgba(79, 195, 247, 0.06) 50%,
+    rgba(74, 93, 176, 0.05) 75%,
+    rgba(79, 195, 247, 0.07) 100%
+  );
+}
+
+body.dark-mode .section-title {
+  background: linear-gradient(135deg, #4fc3f7 0%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+body.dark-mode .section-item {
+  background: rgba(40, 45, 70, 0.8);
+  border-color: rgba(79, 195, 247, 0.3);
+}
+
+body.dark-mode .section-item:hover {
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 30px rgba(79, 195, 247, 0.4);
+  border-color: #4fc3f7;
+}
+
+body.dark-mode .item-title {
+  color: #4fc3f7;
+}
+
+body.dark-mode .item-institution {
+  color: #e0e0e0;
+}
+
+body.dark-mode .item-location,
+body.dark-mode .item-duration,
+body.dark-mode .item-stream {
+  color: #b0b0b0;
+}
+
+body.dark-mode .item-description,
+body.dark-mode .item-subjects {
+  color: #d0d0d0;
+}
+
+body.dark-mode .item-subjects li {
+  color: #d0d0d0;
+}
+
+body.dark-mode .item-subjects strong {
+  color: #4fc3f7;
+}
+
+body.dark-mode .feature-list li {
+  color: #d0d0d0;
+}
+
+body.dark-mode .feature-list li::before {
+  color: #4fc3f7;
+}
+
+body.dark-mode .tech-tag {
+  background: rgba(79, 195, 247, 0.2);
+  border-color: rgba(79, 195, 247, 0.4);
+}
+
+body.dark-mode .tech-tag:hover {
+  background: rgba(79, 195, 247, 0.3);
+  border-color: #4fc3f7;
 }

@@ -35,14 +35,21 @@
 
 /* ================= PAGE WRAPPER ================= */
 .page-wrapper {
-  min-height: 100vh;
+  min-height: calc(100vh - 70px);
   padding: 90px 20px 80px;
   display: flex;
   justify-content: center;
-  align-items: flex-start;
+  align-items: center;
   box-sizing: border-box;
   position: relative;
   z-index: 1;
+}
+
+/* Center when content fits */
+@media (min-height: 900px) {
+  .page-wrapper {
+    align-items: center;
+  }
 }
 
 /* ================= EXPERIENCE CONTAINER ================= */
@@ -518,4 +525,116 @@
     height: 40px;
     font-size: 30px;
   }
+}
+
+/* ================= DARK MODE ================= */
+body.dark-mode .experience-body {
+  background: #0f1420;
+}
+
+body.dark-mode .experience-body::before {
+  background-image: url("../images/bg_image_dark.jpg");
+  opacity: 0.4;
+}
+
+body.dark-mode .experience-container {
+  background: rgba(26, 31, 58, 0.95);
+  border-color: #4a5db0;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4), 0 0 40px rgba(79, 195, 247, 0.3), inset 0 0 20px rgba(79, 195, 247, 0.05);
+}
+
+body.dark-mode .experience-container:hover {
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.5), 0 0 45px rgba(79, 195, 247, 0.4), inset 0 0 25px rgba(79, 195, 247, 0.1);
+}
+
+body.dark-mode .experience-container::before {
+  background: linear-gradient(
+    135deg,
+    rgba(79, 195, 247, 0.05) 0%,
+    rgba(74, 93, 176, 0.08) 25%,
+    rgba(79, 195, 247, 0.06) 50%,
+    rgba(74, 93, 176, 0.05) 75%,
+    rgba(79, 195, 247, 0.07) 100%
+  );
+}
+
+body.dark-mode .ai-title {
+  background: linear-gradient(135deg, #4fc3f7 0%, #ffffff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+body.dark-mode .subtitle {
+  color: #b0b0b0;
+}
+
+body.dark-mode .experience-card {
+  background: rgba(40, 45, 70, 0.7);
+  border-color: rgba(79, 195, 247, 0.5);
+}
+
+body.dark-mode .position-title {
+  color: #4fc3f7;
+}
+
+body.dark-mode .company-name {
+  color: #4fc3f7;
+}
+
+body.dark-mode .location {
+  color: #b0b0b0;
+}
+
+body.dark-mode .duration {
+  color: #4fc3f7;
+}
+
+body.dark-mode .experience-type.experience-internship {
+  background: rgba(79, 195, 247, 0.2);
+  color: #4fc3f7;
+  border-color: #4fc3f7;
+}
+
+body.dark-mode .experience-type.experience-freelance {
+  background: rgba(74, 93, 176, 0.2);
+  color: #4fc3f7;
+  border-color: #4fc3f7;
+}
+
+body.dark-mode .experience-content h4 {
+  color: #4fc3f7;
+}
+
+body.dark-mode .responsibilities li,
+body.dark-mode .achievements li {
+  color: #d0d0d0;
+}
+
+body.dark-mode .tech-tag {
+  background: rgba(79, 195, 247, 0.2);
+  color: #4fc3f7;
+  border-color: rgba(79, 195, 247, 0.4);
+}
+
+body.dark-mode .experience-link-btn {
+  border-color: rgba(79, 195, 247, 0.5);
+  color: #4fc3f7;
+}
+
+body.dark-mode .experience-link-btn:hover {
+  border-color: #4fc3f7;
+  box-shadow: 0 8px 25px rgba(79, 195, 247, 0.6);
+}
+
+body.dark-mode .experience-link-btn svg {
+  fill: #4fc3f7;
+}
+
+body.dark-mode .pdf-preview h4 {
+  color: #4fc3f7;
+}
+
+body.dark-mode .experience-header {
+  border-bottom-color: rgba(79, 195, 247, 0.3);
 }
