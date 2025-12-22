@@ -130,6 +130,11 @@ function drawConnections() {
 
 // Animation loop
 function animate() {
+  if (document.hidden) {
+    requestAnimationFrame(animate)
+    return
+  }
+
   ctx.clearRect(0, 0, width, height)
 
   drawConnections()

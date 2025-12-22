@@ -15,9 +15,7 @@
 <!-- NAVBAR -->
 <nav class="navbar">
   <div class="logo">
-    <span class="logo-text">AI</span>
-    <span class="logo-separator">|</span>
-    <span class="logo-text">Portfolio</span>
+    <span class="logo-text">KG's Portfolio</span>
   </div>
 
   <div class="nav-right">
@@ -194,33 +192,5 @@
 <script src="js/navbar.js"></script>
 <script src="js/scroll-handler.js"></script>
 <script src="js/index.js"></script>
-
-<script>
-  /* ================= LOGOUT ================= */
-  const logoutBtn = document.getElementById("logoutBtn");
-  if (logoutBtn) {
-    logoutBtn.addEventListener("click", (e) => {
-      e.preventDefault();
-      localStorage.removeItem("isLoggedIn");
-      localStorage.removeItem("user");
-      window.location.href = "login.html";
-    });
-  }
-
-  /* ================= SHOW USER EMAIL ================= */
-  const currentUser = JSON.parse(localStorage.getItem("user"));
-  const emailLi = document.getElementById("emailLi");
-  const logoutLi = document.getElementById("logoutLi");
-
-  if (currentUser && currentUser.email) {
-    if (emailLi) {
-      emailLi.style.display = "block";
-      emailLi.textContent = currentUser.email;
-    }
-    if (logoutLi) {
-      logoutLi.style.display = "block";
-    }
-  }
-</script>
 </body>
 </html>

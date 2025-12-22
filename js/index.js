@@ -1,3 +1,33 @@
+if (localStorage.getItem("isLoggedIn") !== "true") {
+  window.location.href = "login.html"
+}
+
+  /* ================= LOGOUT ================= */
+  const logoutBtn = document.getElementById("logoutBtn");
+  if (logoutBtn) {
+    logoutBtn.addEventListener("click", (e) => {
+      e.preventDefault();
+      localStorage.removeItem("isLoggedIn");
+      localStorage.removeItem("user");
+      window.location.href = "login.html";
+    });
+  }
+
+  /* ================= SHOW USER EMAIL ================= */
+  const currentUser = JSON.parse(localStorage.getItem("user"));
+  const emailLi = document.getElementById("emailLi");
+  const logoutLi = document.getElementById("logoutLi");
+
+  if (currentUser && currentUser.email) {
+    if (emailLi) {
+      emailLi.style.display = "block";
+      emailLi.textContent = currentUser.email;
+    }
+    if (logoutLi) {
+      logoutLi.style.display = "block";
+    }
+  }
+
 ;(() => {
   // Hamburger menu toggle is handled by navbar.js
   // Scroll visibility is handled by scroll-handler.js

@@ -12,12 +12,14 @@ let currentTheme = localStorage.getItem("theme");
 function initTheme() {
   if (currentTheme === "dark" || (!currentTheme && prefersDarkScheme.matches)) {
     document.body.classList.add("dark-mode");
+    document.body.classList.remove("light-mode");
     if (sunIcon && moonIcon) {
       sunIcon.style.display = "none";
       moonIcon.style.display = "block";
     }
   } else {
     document.body.classList.remove("dark-mode");
+    document.body.classList.add("light-mode");
     if (sunIcon && moonIcon) {
       sunIcon.style.display = "block";
       moonIcon.style.display = "none";
@@ -31,8 +33,12 @@ initTheme();
 // Toggle theme function
 function toggleTheme() {
   document.body.classList.toggle("dark-mode");
-
   const isDarkMode = document.body.classList.contains("dark-mode");
+  if (isDarkMode) {
+    document.body.classList.remove("light-mode");
+  } else {
+    document.body.classList.add("light-mode");
+  }
 
   if (isDarkMode) {
     if (sunIcon && moonIcon) {
@@ -63,12 +69,14 @@ prefersDarkScheme.addEventListener("change", (e) => {
   if (!localStorage.getItem("theme")) {
     if (e.matches) {
       document.body.classList.add("dark-mode");
+      document.body.classList.remove("light-mode");
       if (sunIcon && moonIcon) {
         sunIcon.style.display = "none";
         moonIcon.style.display = "block";
       }
     } else {
       document.body.classList.remove("dark-mode");
+      document.body.classList.add("light-mode");
       if (sunIcon && moonIcon) {
         sunIcon.style.display = "block";
         moonIcon.style.display = "none";

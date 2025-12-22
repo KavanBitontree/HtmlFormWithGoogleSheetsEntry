@@ -1,8 +1,9 @@
 /* CSS Variables for Light/Dark Mode */
 :root {
+  color-scheme: light dark;
   --bg-image-light: url("/images/bg_image.jpg");
-  --bg-image-dark: url("/images/bg_image_dark.jpg");
-
+  /* --bg-image-dark: url("/images/bg_image_dark.jpg"); */
+  --bg-image-dark: linear-gradient(145deg, #0b1021 0%, #0f172a 45%, #0a1222 100%);
   /* Light theme colors */
   --text-primary-light: #333;
   --text-secondary-light: #555;
@@ -37,11 +38,45 @@ html {
 body {
   background-image: var(--bg-image-light);
   background-size: cover;
+  background-color: #0f172a;
+
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
   position: relative;
   transition: background-image 0.5s ease;
+}
+
+/* Explicit light-mode class to override prefers-color-scheme when user toggles */
+body.light-mode {
+  background-image: var(--bg-image-light) !important;
+}
+
+body.light-mode::before {
+  background: linear-gradient(135deg, rgba(28, 36, 111, 0.1) 0%, rgba(0, 188, 212, 0.05) 100%) !important;
+}
+
+body.light-mode::after {
+  background-image: linear-gradient(rgba(0, 188, 212, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 188, 212, 0.03) 1px, transparent 1px) !important;
+  animation: gridMove 20s linear infinite;
+}
+
+/* Respect device/browser dark preference by default (before JS toggle runs) */
+@media (prefers-color-scheme: dark) {
+  body {
+    background-image: var(--bg-image-dark);
+  }
+
+  body::before {
+    background: linear-gradient(145deg, rgba(36, 48, 94, 0.55) 0%, rgba(79, 195, 247, 0.18) 100%) !important;
+  }
+
+  body::after {
+    background-image: linear-gradient(rgba(79, 195, 247, 0.03) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(79, 195, 247, 0.03) 1px, transparent 1px) !important;
+    animation: gridMove 20s linear infinite;
+  }
 }
 
 /* Added AI/ML themed overlay effect */
@@ -79,13 +114,18 @@ body.dark-mode {
 }
 
 body.dark-mode::before {
-  background: linear-gradient(135deg, rgba(90, 100, 180, 0.15) 0%, rgba(79, 195, 247, 0.1) 100%) !important;
+  /* background: linear-gradient(135deg, rgba(90, 100, 180, 0.15) 0%, rgba(79, 195, 247, 0.1) 100%) !important; */
+  background: linear-gradient(145deg, rgba(36, 48, 94, 0.55) 0%, rgba(79, 195, 247, 0.18) 100%) !important;
+
 }
 
 body.dark-mode::after {
-  background-image: linear-gradient(rgba(79, 195, 247, 0.05) 1px, transparent 1px),
+  /* background-image: linear-gradient(rgba(79, 195, 247, 0.05) 1px, transparent 1px),
     linear-gradient(90deg, rgba(79, 195, 247, 0.05) 1px, transparent 1px) !important;
- animation: gridMove 20s linear infinite;
+ animation: gridMove 20s linear infinite; */
+ background-image: linear-gradient(rgba(79, 195, 247, 0.03) 1px, transparent 1px),
+ linear-gradient(90deg, rgba(79, 195, 247, 0.03) 1px, transparent 1px) !important;
+animation: gridMove 20s linear infinite;
 }
 
 @keyframes gridMove {

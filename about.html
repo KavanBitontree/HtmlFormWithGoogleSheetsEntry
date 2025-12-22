@@ -25,9 +25,7 @@
 <!-- Navbar -->
 <nav class="navbar">
   <div class="logo">
-    <span class="logo-text">AI</span>
-    <span class="logo-separator">|</span>
-    <span class="logo-text">Portfolio</span>
+    <span class="logo-text">KG's Portfolio</span>
   </div>
 
   <div class="nav-right">
@@ -75,7 +73,6 @@
         <!-- EDUCATION SECTION -->
         <section class="about-section" id="education">
             <h2 class="section-title">
-                <span class="title-icon">🎓</span>
                 Education
             </h2>
 
@@ -194,14 +191,14 @@
                     </div>
                 </div>
                 <div class="item-preview">
-                    <img src="/images/mathcraft.jpeg" alt="MathCraft Project" class="project-image">
+                    <img src="/images/mathcraft.jpeg" alt="MathCraft Project" class="project-image" loading="lazy">
                 </div>
             </div>
 
             <!-- AnnaMitra - Left Image, Right Text -->
             <div class="section-item item-right">
                 <div class="item-preview">
-                    <img src="/images/anna.png" alt="AnnaMitra Project" class="project-image">
+                    <img src="/images/anna.png" alt="AnnaMitra Project" class="project-image" loading="lazy">
                 </div>
                 <div class="item-content">
                     <h3 class="item-title">AnnaMitra - Friend of Food</h3>
@@ -246,14 +243,14 @@
                     </div>
                 </div>
                 <div class="item-preview">
-                    <img src="/images/wd.jpeg" alt="Watchdog Project" class="project-image">
+                    <img src="/images/wd.jpeg" alt="Watchdog Project" class="project-image" loading="lazy">
                 </div>
             </div>
 
             <!-- VidBot - Left Image, Right Text -->
             <div class="section-item item-right">
                 <div class="item-preview">
-                    <img src="/images/vidbot.jpeg" alt="VidBot Project" class="project-image">
+                    <img src="/images/vidbot.jpeg" alt="VidBot Project" class="project-image" loading="lazy">
                 </div>
                 <div class="item-content">
                     <h3 class="item-title">VidBot</h3>
@@ -299,7 +296,7 @@
                     </div>
                 </div>
                 <div class="item-preview">
-                    <img src="/images/row.webp" alt="Kshatratej Project" class="project-image">
+                    <img src="/images/row.webp" alt="Kshatratej Project" class="project-image" loading="lazy">
                 </div>
             </div>
         </section>
@@ -336,7 +333,7 @@
                     </div>
                 </div>
                 <div class="item-preview">
-                    <img src="/images/adas.png" alt="ADAS Research" class="project-image">
+                    <img src="/images/adas.png" alt="ADAS Research" class="project-image" loading="lazy">
                 </div>
             </div>
         </section>
@@ -385,41 +382,11 @@
 <div id="pdfModal" class="pdf-modal">
     <div class="pdf-modal-content">
         <span class="pdf-modal-close" onclick="closePdfModal()">&times;</span>
-        <iframe id="pdfFrame" class="pdf-frame"></iframe>
+        <iframe id="pdfFrame" class="pdf-frame" loading="lazy"></iframe>
     </div>
 </div>
 
-<script>
-  /* ================= AUTH GUARD ================= */
-  if (localStorage.getItem("isLoggedIn") !== "true") {
-    window.location.href = "login.html";
-  }
-
-  /* ================= LOGOUT ================= */
-  document.getElementById("logoutBtn").addEventListener("click", () => {
-    localStorage.removeItem("isLoggedIn");
-    localStorage.removeItem("user");
-    window.location.href = "login.html";
-  });
-
-  /* ================= SHOW USER EMAIL ================= */
-  const currentUser = JSON.parse(localStorage.getItem("user"));
-  const emailLi = document.getElementById("emailLi");
-  const logoutLi = document.getElementById("logoutLi");
-
-  if (currentUser && currentUser.email) {
-    if (emailLi) {
-      emailLi.style.display = "block";
-      emailLi.textContent = currentUser.email;
-    }
-    if (logoutLi) {
-      logoutLi.style.display = "block";
-    }
-  } else {
-    // Redirect if not logged in
-    window.location.href = "login.html";
-  }
-</script>
+<script src="js/about.js"></script>
 <script src="js/navbar.js"></script>
 <script src="js/scroll-handler.js"></script>
 <script src="js/about-neural.js"></script>

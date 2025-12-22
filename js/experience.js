@@ -84,11 +84,11 @@ document.addEventListener("DOMContentLoaded", () => {
     document.getElementById("githubUrlBtn").href = techorses.githubUrl
   }
 
-  initPDFThumbnails()
+  initPDFThumbnailsLazy()
 })
 
-/* Added PDF.js thumbnail generation */
-function initPDFThumbnails() {
+/* Added PDF.js thumbnail generation with lazy loading */
+function initPDFThumbnailsLazy() {
   const pdfjsLib = window["pdfjs-dist/build/pdf"]
   if (typeof pdfjsLib === "undefined") {
     console.error("PDF.js library not loaded")
@@ -99,7 +99,8 @@ function initPDFThumbnails() {
 
   const thumbnails = document.querySelectorAll(".pdf-thumbnail")
 
-  thumbnails.forEach((canvas) => {
+  const renderThumb = (canvas) => {
+    if (canvas.dataset.loaded === "true") return
     const pdfUrl = canvas.getAttribute("data-pdf")
     if (!pdfUrl) return
 
@@ -121,6 +122,7 @@ function initPDFThumbnails() {
           }
 
           page.render(renderContext)
+          canvas.dataset.loaded = "true"
         })
       })
       .catch((error) => {
@@ -132,40 +134,36 @@ function initPDFThumbnails() {
         context.font = "16px Arial"
         context.textAlign = "center"
         context.fillText("PDF Preview Unavailable", canvas.width / 2, canvas.height / 2)
+        canvas.dataset.loaded = "true"
       })
-  })
-}
-
-/* Added PDF modal functions */
-function openPDFModal(pdfUrl) {
-  const modal = document.getElementById("pdfModal")
-  const iframe = document.getElementById("pdfModalIframe")
-  iframe.src = pdfUrl
-  modal.style.display = "block"
-  document.body.style.overflow = "hidden"
-}
-
-function closePDFModal() {
-  const modal = document.getElementById("pdfModal")
-  const iframe = document.getElementById("pdfModalIframe")
-  modal.style.display = "none"
-  iframe.src = ""
-  document.body.style.overflow = "auto"
-}
-
-// Close modal on outside click
-window.addEventListener("click", (event) => {
-  const modal = document.getElementById("pdfModal")
-  if (event.target === modal) {
-    closePDFModal()
   }
-})
 
-// Close modal on Escape key
-window.addEventListener("keydown", (event) => {
-  if (event.key === "Escape") {
-    closePDFModal()
+  if ("IntersectionObserver" in window) {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            renderThumb(entry.target)
+            observer.unobserve(entry.target)
+          }
+        })
+      },
+      { rootMargin: "200px 0px", threshold: 0.1 }
+    )
+
+    thumbnails.forEach((canvas) => observer.observe(canvas))
+  } else {
+    // Fallback: render immediately
+    thumbnails.forEach(renderThumb)
   }
+}
+
+// Pause neural animation when tab not visible to reduce CPU on experience page
+document.addEventListener("visibilitychange", () => {
+  const canvas = document.getElementById("neuralCanvas")
+  if (!canvas) return
+  const shouldPause = document.hidden
+  canvas.style.animationPlayState = shouldPause ? "paused" : "running"
 })
 
 /* ================= BUTTON HOVER EFFECTS ================= */

@@ -25,9 +25,7 @@
 <!-- Navbar -->
 <nav class="navbar">
   <div class="logo">
-    <span class="logo-text">AI</span>
-    <span class="logo-separator">|</span>
-    <span class="logo-text">Portfolio</span>
+    <span class="logo-text">KG's Portfolio</span>
   </div>
 
   <div class="nav-right">
@@ -99,7 +97,7 @@
         <!-- Added PDF preview with thumbnail for AI/ML intern -->
         <div class="pdf-preview">
           <h4>INTERNSHIP CERTIFICATE:</h4>
-          <div class="pdf-thumbnail-wrapper" onclick="openPDFModal('docs/bitontree-certificate.pdf')">
+          <div class="pdf-thumbnail-wrapper" onclick="openPdfModal('docs/bitontree-certificate.pdf')">
             <canvas class="pdf-thumbnail" data-pdf="docs/bitontree-certificate.pdf"></canvas>
             <div class="pdf-overlay">
               <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
@@ -178,7 +176,7 @@
         <!-- Updated PDF preview to use thumbnail -->
         <div class="pdf-preview">
           <h4>PREVIEW OF COMPLETION CERTIFICATE:</h4>
-          <div class="pdf-thumbnail-wrapper" onclick="openPDFModal('docs/Kavan_Gajera.pdf')">
+          <div class="pdf-thumbnail-wrapper" onclick="openPdfModal('docs/Kavan_Gajera.pdf')">
             <canvas class="pdf-thumbnail" data-pdf="docs/Kavan_Gajera.pdf"></canvas>
             <div class="pdf-overlay">
               <svg width="48" height="48" viewBox="0 0 24 24" fill="white">
@@ -198,16 +196,17 @@
 <div id="pdfModal" class="pdf-modal">
   <div class="pdf-modal-content">
     <span class="pdf-modal-close" onclick="closePDFModal()">&times;</span>
-    <iframe id="pdfModalIframe" src=""></iframe>
+    <iframe id="pdfFrame" src="" loading="lazy"></iframe>
   </div>
 </div>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
-<script src="utils/config.js"></script>
-<script src="js/navbar.js"></script>
-<script src="js/scroll-handler.js"></script>
-<script src="js/experience.js"></script>
-<script src="js/experience-neural.js"></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+<script defer src="js/pdf-viewer.js"></script>
+<script defer src="utils/config.js"></script>
+<script defer src="js/navbar.js"></script>
+<script defer src="js/scroll-handler.js"></script>
+<script defer src="js/experience.js"></script>
+<script defer src="js/experience-neural.js"></script>
 
 </body>
 </html>
